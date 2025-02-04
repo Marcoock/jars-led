@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #121212;
+}
+
+.bit-A, .bit-B {
+    position: relative;
+    width: 30%; 
+    margin: 5%;
+    aspect-ratio: 4 / 5; 
+}
+
+.bit-B {
+    width: 24%;
+}
+
+.bol {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 67% 22%;
+    border-bottom-right-radius: 67% 22%;
+    border-top-right-radius: 50% 45%;
+    border-top-left-radius: 50% 45%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2% solid transparent; /* Usamos porcentajes para que sea proporcional */
+    transform-origin: bottom center;
+    animation: animacion 5s linear infinite;
+}
+
+.bol::before {
+    content: "";
+    position: absolute;
+    top: -17%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    height: 18%;
+    aspect-ratio: 1 / 0.3;
+    border-bottom-left-radius: 51% 42%;
+    border-bottom-right-radius: 51% 42%;
+    border-top-right-radius: 51% 42%;
+    border-top-left-radius: 51% 42%;
+    background-color: #444;
+    border: 2px solid #444;
+    box-shadow: 0px 9px 16px 0px rgb(12 12 12 / 61%);
+}
+
+.bol::after {
+    content: "";
+    position: absolute;
+    top: -10%; /* Ajustamos en porcentajes */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 55%; /* Ajustamos en porcentajes */
+    aspect-ratio: 1 / 0.3;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes animacion {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.liquido {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    background: #41c1fb;
+    border-bottom-left-radius: 67% 22%;
+    border-bottom-right-radius: 67% 22%;
+    transform-origin: top center;
+}
+
+.liquido::before {
+    content: "";
+    position: absolute;
+    top: -21%; /* Ajustamos en porcentajes */
+    left: 0;
+    width: 100%;
+    aspect-ratio: 2 / 0.5;
+    background: #1fa4e0;
+    border-radius: 50%;
+}
+
+.sombra {
+    margin: -10% 0 0 2%; /* Ajustamos en porcentajes */
+    width: 97%;
+    aspect-ratio: 19 / 6;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.reflejo {
+    content: "";
+    position: absolute;
+    top: 19%; /* Ajustamos en porcentajes */
+    left: 61%; /* Ajustamos en porcentajes */
+    transform: translate(-50%, -50%);
+    width: 30%; /* Ajustamos en porcentajes */
+    aspect-ratio: 3 / 1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
