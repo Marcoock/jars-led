@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SerialConnectionService {
 
-  private conexion = 'http://127.0.0.1:5000/';
+  private conexion = 'https://api-led.vercel.app/';
 
   constructor(private http: HttpClient) { }
 
