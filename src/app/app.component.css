@@ -1,4 +1,4 @@
-section {
+/* section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,12 +52,10 @@ button {
   content: "";
   position: absolute;
   top: -10%;
-  /* Ajustamos en porcentajes */
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   width: 55%;
-  /* Ajustamos en porcentajes */
   aspect-ratio: 1 / 0.3;
   background: rgba(255, 255, 255, 0.05);
 }
@@ -108,12 +106,10 @@ button {
 
 .agua-lleno {
   height: 74%;
-  /* Inicialmente lleno */
 }
 
 .agua-vacio {
   height: 0%;
-  /* Inicialmente vacío */
 }
 
 .liquido-top {
@@ -124,7 +120,6 @@ button {
   content: "";
   position: absolute;
   top: -12%;
-  /* Ajustamos en porcentajes */
   left: -3;
   width: 100%;
   aspect-ratio: 2 / 0.5;
@@ -152,8 +147,6 @@ button {
   background: rgba(255, 255, 255, 0.05);
 }
 
-
-/* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -161,14 +154,12 @@ button {
   height: 34px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -207,11 +198,11 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+
 .slider.round {
   border-radius: 34px;
 }
 
 .slider.round:before {
   border-radius: 50%;
-}
+} */

@@ -1,1 +1,123 @@
-<p>dashboard works!</p>
+<div class="background-bottom-right background-base"></div>
+<div class="background-bottom-left background-base"></div>
+<div class="background-top-right background-base"></div>
+<div class="background-top-left background-base"></div>
+
+<div class="container-dashboard">
+  <!-- Panel Principal -->
+  <div class="head-panel card">
+
+  </div>
+
+  <!-- Contenido del panel -->
+  <div class="content-view">
+    <!-- Panel Activo -->
+    <div class="panel-active card">
+      <div class="section-A">
+        <section>
+          <!-- <label class="switch" (click)="transferirAgua()">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label> -->
+
+          <div class="bit-A">
+            <div class="bol">
+              <div class="reflejo"></div>
+              <div class="desborde">
+                <div class="liquido agua-lleno"></div>
+              </div>
+            </div>
+            <div class="sombra"></div>
+          </div>
+
+          <div class="bit-B">
+            <div class="bol">
+              <div class="reflejo"></div>
+              <div class="desborde">
+                <div class="liquido agua-vacio"></div>
+              </div>
+            </div>
+            <div class="sombra"></div>
+          </div>
+        </section>
+        <div class="division-h"></div>
+        <p>{{activacionA}}</p>
+        <div class="opertors-container">
+          <div class="graph">
+            <div class="frequency">Frecuencia: {{ frequency }}</div>
+            <div class="timer-container">
+              <round-progress [current]="remainingTime" [max]="totalTime" [color]="'#3B50D6'" [background]="'#e5e7eb'"
+                [radius]="50" [stroke]="5" [rounded]="true" [clockwise]="true">
+              </round-progress>
+              <svg class="doughnut" viewBox="0 0 100 100" width="105" height="105">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
+                  stroke-linecap="round-progress" />
+              </svg>
+              <div class="time-display">{{ timeFormatted }}</div>
+            </div>
+          </div>
+          <div class="separador-v"></div>
+          <div class="sections-bottons">
+            <h1>Holaaa</h1>
+          </div>
+        </div>
+
+      </div>
+      <div class="estructure-content">
+        <div class="title-section">
+          <h2>{{ seccionActivo }}</h2>
+        </div>
+        <div class="separador">
+          <div class="point s"></div>
+          <div class="point i"></div>
+        </div>
+      </div>
+      <div class="section-B">
+
+      </div>
+    </div>
+
+    <!-- Menú Secciones -->
+    <div class="sections">
+      <!-- Primera Sección -->
+      <div class="section-s">
+        <div class="section-dupla">
+          <div class="section card" (click)="seleccionarSeccion('1', 'S1', 'S2')">
+            <h1>1</h1>
+          </div>
+          <div class="section card" (click)="seleccionarSeccion('2', 'S3','')">
+            <h1>2</h1>
+          </div>
+        </div>
+        <div class="section-dupla">
+          <div class="section card" (click)="seleccionarSeccion('3', 'S4', '')">
+            <h1>3</h1>
+          </div>
+          <div class="section card" (click)="seleccionarSeccion('4', 'S5', 'S6')">
+            <h1>4</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda Sección -->
+      <div class="section-q">
+        <div class="section-dupla">
+          <div class="section card" (click)="seleccionarSeccion('5', 'Q1', 'Q2')">
+            <h1>1</h1>
+          </div>
+          <div class="section card" (click)="seleccionarSeccion('6', 'Q3', '')">
+            <h1>2</h1>
+          </div>
+        </div>
+        <div class="section-dupla">
+          <div class="section card" (click)="seleccionarSeccion('7', 'Q4','')">
+            <h1>3</h1>
+          </div>
+          <div class="section card" (click)="seleccionarSeccion('8', 'Q5', 'Q6')">
+            <h1>4</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

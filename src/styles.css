@@ -1,10 +1,159 @@
-/* body {
-    margin: 0; 
-    padding: 0; 
-    height: 100vh; 
-    background-image: url('/foni.png'); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-  }
-   */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #EBE9E9;
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+}
+
+/* Pseudo-elemento para la imagen de fondo */
+body::before {
+  content: ""; /* Necesario para que el pseudo-elemento se renderice */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ajusta la altura según el tamaño de tu imagen */
+  background-image: url(/footer.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  filter: drop-shadow(7px 8px 3px #9d9d9d); /* Aplicar el filtro */
+  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del body */
+}
+/* Clase base para evitar repetir propiedades comunes */
+.background-base {
+  position: absolute;
+  height: 150px; /* Alto del div */
+  background-size: cover; /* Ajusta la imagen al tamaño del div */
+  background-position: center; /* Centra la imagen dentro del div */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+/* Posición inferior derecha */
+.background-bottom-right {
+  bottom: 0;
+  right: 0;
+  filter: drop-shadow(2px -6px 3px #9d9d9d);
+  width: 200px; /* Ancho del div */
+  background-image: url(/background-bottom-right.png); /* Ruta de la imagen */
+}
+
+/* Posición inferior izquierda */
+.background-bottom-left {
+  bottom: 0;
+  left: 0;
+  filter: drop-shadow(2px -6px 3px #9d9d9d);
+  width: 200px; /* Ancho del div */
+  background-image: url(/background-bottom-left.png); /* Ruta de la imagen */
+}
+
+/* Posición superior derecha */
+.background-top-right {
+  top: 0;
+  right: 0;
+  filter: drop-shadow(-5px 7px 3px #9d9d9d);
+  width: 127px; /* Ancho del div */
+  background-image: url(/background-top-right.png); /* Ruta de la imagen */
+}
+
+/* Posición superior izquierda */
+.background-top-left {
+  top: 0;
+  left: 0;
+  filter: drop-shadow(7px 8px 3px #9d9d9d);
+  width: 127px; /* Ancho del div */
+  background-image: url(/background-top-left.png); /* Ruta de la imagen */
+}
+
+* {
+  font-family: "Inter", serif;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  overflow: hidden;
+  /* Oculta el contenido que se desborda */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transición suave */
+  max-width: 100%;
+  /* Ancho máximo */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  /* Efecto de levantar la tarjeta */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Sombra más pronunciada al hacer hover */
+}
+
+.card img {
+  width: 100%;
+  /* La imagen ocupa todo el ancho */
+  height: auto;
+  /* Altura automática para mantener la proporción */
+  object-fit: cover;
+  /* Ajusta la imagen sin distorsionarla */
+}
+
+.card-content {
+  padding: 16px;
+  /* Espaciado interno */
+  flex-grow: 1;
+  /* El contenido ocupa el espacio restante */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  /* Tamaño del título */
+  font-weight: bold;
+  /* Negrita */
+  margin-bottom: 8px;
+  /* Margen inferior */
+  color: #333333;
+  /* Color del texto */
+}
+
+.card-description {
+  font-size: 1rem;
+  /* Tamaño del texto */
+  color: #666666;
+  /* Color del texto */
+  margin-bottom: 16px;
+  /* Margen inferior */
+}
+
+.card-footer {
+  padding: 16px;
+  /* Espaciado interno */
+  background-color: #f5f5f5;
+  /* Fondo gris claro */
+  border-top: 1px solid #e0e0e0;
+  /* Borde superior */
+  text-align: right;
+  /* Alineación del texto a la derecha */
+}
+
+.card-footer button {
+  background-color: #007bff;
+  /* Color de fondo del botón */
+  color: #ffffff;
+  /* Color del texto del botón */
+  border: none;
+  /* Sin borde */
+  padding: 8px 16px;
+  /* Espaciado interno */
+  border-radius: 4px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease;
+  /* Transición suave */
+}
+
+.card-footer button:hover {
+  background-color: #0056b3;
+  /* Color de fondo al hacer hover */
+}
