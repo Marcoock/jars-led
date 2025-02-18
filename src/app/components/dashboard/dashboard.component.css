@@ -22,13 +22,14 @@
   align-content: center;
 }
 
-h2, p {
+h2,
+p {
   font-size: .8em;
   text-shadow: 0px 3px 3px #6f6e6e;
   color: #525256;
 }
 
-p{
+p {
   font-size: .5em;
   font-weight: bold;
   justify-self: center;
@@ -55,7 +56,6 @@ p{
     width: .38rem;
     background-color: #23A1AA;
     border-radius: 50vh;
-    margin-left: 0.1rem;
   }
 
   .s {
@@ -71,6 +71,9 @@ p{
 .section-B {
   height: 100%;
   width: auto;
+}
+.graph-B{
+  display: flex;
 }
 
 .head-panel {
@@ -149,15 +152,6 @@ section {
   margin-top: 7vh;
 }
 
-button {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-}
 
 .bit-A,
 .bit-B {
@@ -231,8 +225,9 @@ button {
   overflow: hidden;
 }
 
-.opertors-container{
+.opertors-container {
   display: flex;
+  justify-content: space-between;
 }
 
 .division-h {
@@ -243,8 +238,12 @@ button {
   filter: drop-shadow(-2px 2px 1px #9d9d9d);
 }
 
-.division-v{
-  
+.division-v {
+  height: 80%;
+  border: 1px solid #62537B;
+  justify-self: center;
+  border-radius: 1px;
+  filter: drop-shadow(-2px 2px 1px #9d9d9d);
 }
 
 .liquido {
@@ -304,65 +303,82 @@ button {
   z-index: 9;
 }
 
+/* Contenedor principal */
 .switch {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+  /* width: 60px; */
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+/* Ocultar el checkbox */
+.toggle-checkbox {
+  display: none;
 }
 
-.slider {
+/* Estilo del fondo del switch */
+.toggle-label {
   position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  width: 1.5vw;
+  height: 3.5vw;
+  background: #ddd;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-.slider:before {
+/* Botón deslizante */
+.toggle-inner {
   position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked+.slider {
-  background-color: #3B50D6;
-}
-
-input:focus+.slider {
-  box-shadow: 0 0 1px #3B50D6;
-}
-
-input:checked+.slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
+  width: 2vw;
+  height: 2vw;
+  background: #1a7f77;
   border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
 }
+
+/* Posición de los textos */
+.toggle-text {
+  position: absolute;
+  font-size: .6em;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s ease;
+}
+
+/* Estilos de los textos */
+.toggle-text.on {
+  color: #1a7f77;
+  top: -1vw;
+}
+
+.toggle-text.off {
+  bottom: 1.3vh;
+}
+
+/* Movimiento del botón cuando está activado */
+.toggle-checkbox:checked + .toggle-label .toggle-inner {
+  transform: translateY(-1.5vw);
+}
+
+/* Cambio de color del texto */
+.toggle-checkbox:checked + .toggle-label .toggle-text.on {
+  color: white;
+  transform: translateY(1.5vw);
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-text.off {
+  color: #1a7f77;
+  transform: translateY(1.5vw);
+}
+
 
 .timer-container {
   display: flex;
@@ -376,22 +392,235 @@ input:checked+.slider:before {
 .frequency {
   background-color: #3B50D6;
   color: white;
-  padding: 5px 10px;
+  padding: .2vw .3vw;
   border-radius: 15px;
   font-size: 0.5rem;
   text-align: center;
-  width: 6rem;
+  width: 6vw;;
+  margin-top: 2vh;
 }
 
 .time-display {
   position: absolute;
-  font-size: .7rem;
+  font-size: .6em;
   font-weight: bold;
   color: #3B4FD6;
 }
 
-.doughnut{
+.doughnut {
   position: absolute;
 }
 
+.duration {
+  background-color: #EB9E22;
+  color: white;
+  padding: .2vw .3vw;
+  border-radius: 15px;
+  font-size: 0.5rem;
+  text-align: center;
+  width: 5vw;;
+  margin-top: 2vh;
+}
 
+.time-display-D {
+  position: absolute;
+  font-size: .6em;
+  font-weight: bold;
+  color: #EB9E22;
+}
+.space-top{
+  margin-top: 1vh;
+}
+
+
+
+.wave {
+  fill: none;
+  stroke: limegreen;
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+/* Hoja inmersa */
+
+.wave {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 1;
+  animation: waveAnimation 2s infinite;
+}
+
+.delay {
+  animation-delay: 0.5s;
+}
+
+.delay2 {
+  animation-delay: 1s;
+}
+
+/* Animación de las ondas */
+@keyframes waveAnimation {
+  0% {
+    r: 5;
+    stroke-dashoffset: 100;
+    opacity: 1;
+  }
+
+  100% {
+    r: 60;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* Posicionamiento del SVG */
+svg {
+  position: relative;
+}
+
+/* Animación flotante e irregular para la hoja */
+.floating-leaf {
+  animation: float-random 5s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes float-random {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  15% {
+    transform: translate(-2px, 3px) rotate(2deg);
+  }
+
+  30% {
+    transform: translate(2px, -5px) rotate(-3deg);
+  }
+
+  45% {
+    transform: translate(-7px, 5px) rotate(1deg);
+  }
+
+  60% {
+    transform: translate(5px, -2px) rotate(-2deg);
+  }
+
+  75% {
+    transform: translate(-2px, 5px) rotate(3deg);
+  }
+
+  90% {
+    transform: translate(3px, -6px) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+
+/* Animación de agua */
+ /* Animación para la hoja emergiendo */
+ @keyframes emerge {
+  0% {
+    transform: translate(50%, 70%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, 20%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 10%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estilo para la hoja */
+.leaf {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  opacity: 0;
+  animation: emerge 2s ease-in-out 0.5s infinite; /* Se repite en secuencia */
+}
+
+.g-duration{
+  margin-left: 1rem;
+}
+
+/* Animación para las hojas en crecimiento */
+
+/* Estilos para las hojas */
+.leaf-g {
+  opacity: 0;
+  transform-origin: center;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite; /* Hace que la animación se repita */
+}
+
+/* Animación para la hoja superior-izquierda */
+#leaf-top-left {
+  animation-name: growMoveRotateLeft;
+  animation-delay: 1s;
+}
+
+/* Animación para la hoja superior-derecha */
+#leaf-top-right {
+  animation-name: growMoveRotateRight;
+  animation-delay: 3s;
+}
+
+/* Animación para la hoja superior-central */
+#leaf-top-center {
+  animation-name: growCenter;
+  animation-delay: 5s;
+}
+
+/* Definición de las animaciones */
+@keyframes growMoveRotateLeft {
+  0% {
+      opacity: 0;
+      transform: scale(0) translate(0, 0) rotate(0deg);
+  }
+  50% {
+      opacity: 1;
+      transform: scale(1) translate(-10px, -10px) rotate(-45deg);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1) translate(-10px, -10px) rotate(-45deg);
+  }
+}
+
+@keyframes growMoveRotateRight {
+  0% {
+      opacity: 0;
+      transform: scale(0) translate(0, 0) rotate(0deg);
+  }
+  50% {
+      opacity: 1;
+      transform: scale(1) translate(10px, -10px) rotate(45deg);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1) translate(10px, -10px) rotate(45deg);
+  }
+}
+
+@keyframes growCenter {
+  0% {
+      opacity: 0;
+      transform: scale(0);
+  }
+  50% {
+      opacity: 1;
+      transform: scale(1.2);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1.2);
+  }
+}

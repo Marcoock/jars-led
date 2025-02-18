@@ -3,30 +3,40 @@ body {
   padding: 0;
   height: 100vh;
   background-color: #EBE9E9;
-  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  position: relative;
+  /* Necesario para posicionar el pseudo-elemento */
 }
 
 /* Pseudo-elemento para la imagen de fondo */
 body::before {
-  content: ""; /* Necesario para que el pseudo-elemento se renderice */
+  content: "";
+  /* Necesario para que el pseudo-elemento se renderice */
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Ajusta la altura según el tamaño de tu imagen */
+  height: 100%;
+  /* Ajusta la altura según el tamaño de tu imagen */
   background-image: url(/footer.png);
   background-position: bottom;
   background-repeat: no-repeat;
-  filter: drop-shadow(7px 8px 3px #9d9d9d); /* Aplicar el filtro */
-  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del body */
+  filter: drop-shadow(7px 8px 3px #9d9d9d);
+  /* Aplicar el filtro */
+  z-index: -1;
+  /* Coloca el pseudo-elemento detrás del contenido del body */
 }
+
 /* Clase base para evitar repetir propiedades comunes */
 .background-base {
   position: absolute;
-  height: 150px; /* Alto del div */
-  background-size: cover; /* Ajusta la imagen al tamaño del div */
-  background-position: center; /* Centra la imagen dentro del div */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  height: 150px;
+  /* Alto del div */
+  background-size: cover;
+  /* Ajusta la imagen al tamaño del div */
+  background-position: center;
+  /* Centra la imagen dentro del div */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
 }
 
 /* Posición inferior derecha */
@@ -34,8 +44,10 @@ body::before {
   bottom: 0;
   right: 0;
   filter: drop-shadow(2px -6px 3px #9d9d9d);
-  width: 200px; /* Ancho del div */
-  background-image: url(/background-bottom-right.png); /* Ruta de la imagen */
+  width: 200px;
+  /* Ancho del div */
+  background-image: url(/background-bottom-right.png);
+  /* Ruta de la imagen */
 }
 
 /* Posición inferior izquierda */
@@ -43,8 +55,10 @@ body::before {
   bottom: 0;
   left: 0;
   filter: drop-shadow(2px -6px 3px #9d9d9d);
-  width: 200px; /* Ancho del div */
-  background-image: url(/background-bottom-left.png); /* Ruta de la imagen */
+  width: 200px;
+  /* Ancho del div */
+  background-image: url(/background-bottom-left.png);
+  /* Ruta de la imagen */
 }
 
 /* Posición superior derecha */
@@ -52,8 +66,10 @@ body::before {
   top: 0;
   right: 0;
   filter: drop-shadow(-5px 7px 3px #9d9d9d);
-  width: 127px; /* Ancho del div */
-  background-image: url(/background-top-right.png); /* Ruta de la imagen */
+  width: 127px;
+  /* Ancho del div */
+  background-image: url(/background-top-right.png);
+  /* Ruta de la imagen */
 }
 
 /* Posición superior izquierda */
@@ -61,8 +77,10 @@ body::before {
   top: 0;
   left: 0;
   filter: drop-shadow(7px 8px 3px #9d9d9d);
-  width: 127px; /* Ancho del div */
-  background-image: url(/background-top-left.png); /* Ruta de la imagen */
+  width: 127px;
+  /* Ancho del div */
+  background-image: url(/background-top-left.png);
+  /* Ruta de la imagen */
 }
 
 * {
@@ -156,4 +174,18 @@ body::before {
 .card-footer button:hover {
   background-color: #0056b3;
   /* Color de fondo al hacer hover */
+}
+
+button {
+  position: unset;
+  transform: none;
+  font-size: .1em;
+  padding: .8vh .8vw;
+  cursor: pointer;
+  border-radius: .5vh;
+  margin: 2vh 5vh;
+  border: none;
+  background-color: #1D8782;
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }

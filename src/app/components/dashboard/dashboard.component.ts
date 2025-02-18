@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { gsap } from 'gsap';
+
 
 
 @Component({
@@ -15,13 +17,32 @@ export class DashboardComponent implements OnInit{
   activacionB: string = 'Activación S2';
 
   frequency = '04h:00m';
-  totalTime = 5 * 60; // 4 horas en segundos
-  remainingTime = this.totalTime;
-  timeFormatted = '';
+  duration = '2m:00s';
+  frequency2 = '04h:00m';
+  duration2 = '2m:00s';
+  totalTimeD = 2 * 60;
+  totalTimeF = 2 * 60; // 4 horas en segundos
+  totalTimeD2 = 3 * 60;
+  totalTimeF2 = 3 * 60; // 4 horas en segundos
+  remainingTimeF = this.totalTimeF;
+  remainingTimeD = this.totalTimeD;
+  timeFormattedD = '';
+  timeFormattedF = '';
+  remainingTimeF2 = this.totalTimeF2;
+  remainingTimeD2 = this.totalTimeD2;
+  timeFormattedD2 = '';
+  timeFormattedF2 = '';
 
   ngOnInit() {
-    this.formatTime();
-    this.startCountdown();
+    this.formatTimeF();
+    this.startCountdownF();
+    this.formatTimeD();
+    this.startCountdownD();
+    
+    this.formatTimeF2();
+    this.startCountdownF2();
+    this.formatTimeD2();
+    this.startCountdownD2();
   }
 
   seleccionarSeccion(seccion: string, activacion1: string, activacion2: string): void {
@@ -63,22 +84,76 @@ export class DashboardComponent implements OnInit{
     // }
   }
 
-  startCountdown() {
+  startCountdownF() {
     const interval = setInterval(() => {
-      if (this.remainingTime > 0) {
-        this.remainingTime--;
-        this.formatTime();
+      if (this.remainingTimeF > 0) {
+        this.remainingTimeF--;
+        this.formatTimeF();
       } else {
         clearInterval(interval);
       }
     }, 1000);
   }
 
-  formatTime() {
-    const hours = Math.floor(this.remainingTime / 3600);
-    const minutes = Math.floor((this.remainingTime % 3600) / 60);
-    const seconds = this.remainingTime % 60;
-    this.timeFormatted = `${hours}h : ${minutes}m : ${seconds}s`;
+  formatTimeF() {
+    const hours = Math.floor(this.remainingTimeF / 3600);
+    const minutes = Math.floor((this.remainingTimeF % 3600) / 60);
+    const seconds = this.remainingTimeF % 60;
+    this.timeFormattedF = `${hours}h : ${minutes}m : ${seconds}s`;
+  }
+
+  startCountdownD() {
+    const interval = setInterval(() => {
+      if (this.remainingTimeD > 0) {
+        this.remainingTimeD--;
+        this.formatTimeD();
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+
+  formatTimeD() {
+    const hours = Math.floor(this.remainingTimeD / 3600);
+    const minutes = Math.floor((this.remainingTimeD % 3600) / 60);
+    const seconds = this.remainingTimeD % 60;
+    this.timeFormattedD = `${hours}h : ${minutes}m : ${seconds}s`;
+  }
+
+  startCountdownF2() {
+    const interval = setInterval(() => {
+      if (this.remainingTimeF2 > 0) {
+        this.remainingTimeF2--;
+        this.formatTimeF2();
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+
+  formatTimeF2() {
+    const hours = Math.floor(this.remainingTimeF2 / 3600);
+    const minutes = Math.floor((this.remainingTimeF2 % 3600) / 60);
+    const seconds = this.remainingTimeF2 % 60;
+    this.timeFormattedF2 = `${hours}h : ${minutes}m : ${seconds}s`;
+  }
+
+  startCountdownD2() {
+    const interval = setInterval(() => {
+      if (this.remainingTimeD2 > 0) {
+        this.remainingTimeD2--;
+        this.formatTimeD2();
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+
+  formatTimeD2() {
+    const hours = Math.floor(this.remainingTimeD2 / 3600);
+    const minutes = Math.floor((this.remainingTimeD2 % 3600) / 60);
+    const seconds = this.remainingTimeD2 % 60;
+    this.timeFormattedD2 = `${hours}h : ${minutes}m : ${seconds}s`;
   }
   
 }

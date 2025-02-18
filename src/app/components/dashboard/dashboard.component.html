@@ -15,10 +15,7 @@
     <div class="panel-active card">
       <div class="section-A">
         <section>
-          <!-- <label class="switch" (click)="transferirAgua()">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label> -->
+
 
           <div class="bit-A">
             <div class="bol">
@@ -44,21 +41,46 @@
         <p>{{activacionA}}</p>
         <div class="opertors-container">
           <div class="graph">
-            <div class="frequency">Frecuencia: {{ frequency }}</div>
-            <div class="timer-container">
-              <round-progress [current]="remainingTime" [max]="totalTime" [color]="'#3B50D6'" [background]="'#e5e7eb'"
-                [radius]="50" [stroke]="5" [rounded]="true" [clockwise]="true">
-              </round-progress>
-              <svg class="doughnut" viewBox="0 0 100 100" width="105" height="105">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
-                  stroke-linecap="round-progress" />
-              </svg>
-              <div class="time-display">{{ timeFormatted }}</div>
+            <div class="g-duration">
+              <div class="duration">Duración: {{ duration }}</div>
+              <div class="timer-container">
+                <round-progress [current]="remainingTimeD" [max]="totalTimeD" [color]="'#EB9E22'"
+                  [background]="'#e5e7eb'" [radius]="40" [stroke]="3" [rounded]="true" [clockwise]="true">
+                </round-progress>
+
+                <div class="time-display-D">{{ timeFormattedD }}</div>
+              </div>
+            </div>
+            <div class="g-frequency">
+              <div class="frequency">Frecuencia: {{ frequency }}</div>
+              <div class="timer-container">
+                <round-progress [current]="remainingTimeF" [max]="totalTimeF" [color]="'#3B50D6'"
+                  [background]="'#e5e7eb'" [radius]="40" [stroke]="5" [rounded]="true" [clockwise]="true">
+                </round-progress>
+                <svg class="doughnut" viewBox="0 0 100 100" width="84" height="90">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
+                    stroke-linecap="round-progress" />
+                </svg>
+                <div class="time-display">{{ timeFormattedF }}</div>
+              </div>
             </div>
           </div>
-          <div class="separador-v"></div>
           <div class="sections-bottons">
-            <h1>Holaaa</h1>
+            <p>Activación Automática</p>
+            <button>Programación</button>
+            <div class="space-top">
+              <div class="division-h"></div>
+            </div>
+            <p>Activación Manual</p>
+            <div class="switch">
+              <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua()">
+              <label for="toggle" class="toggle-label">
+                <span class="toggle-inner">
+                  <span class="toggle-text on">on</span>
+                  <span class="toggle-text off">off</span>
+                </span>
+              </label>
+            </div>
           </div>
         </div>
 
@@ -73,7 +95,32 @@
         </div>
       </div>
       <div class="section-B">
+        <p>{{activacionB}}</p>
+        <div class="graph-B">
+          <div class="g-frequency">
+            <div class="frequency">Frecuencia: {{ frequency2 }}</div>
+            <div class="timer-container">
+              <round-progress [current]="remainingTimeF2" [max]="totalTimeF2" [color]="'#3B50D6'"
+                [background]="'#e5e7eb'" [radius]="40" [stroke]="5" [rounded]="true" [clockwise]="true">
+              </round-progress>
+              <svg class="doughnut" viewBox="0 0 100 100" width="84" height="90">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
+                  stroke-linecap="round-progress" />
+              </svg>
+              <div class="time-display">{{ timeFormattedF2 }}</div>
+            </div>
+          </div>
+          <div class="g-duration">
+            <div class="duration">Duración: {{ duration2 }}</div>
+            <div class="timer-container">
+              <round-progress [current]="remainingTimeD2" [max]="totalTimeD2" [color]="'#EB9E22'"
+                [background]="'#e5e7eb'" [radius]="40" [stroke]="3" [rounded]="true" [clockwise]="true">
+              </round-progress>
 
+              <div class="time-display-D">{{ timeFormattedD2 }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -83,15 +130,57 @@
       <div class="section-s">
         <div class="section-dupla">
           <div class="section card" (click)="seleccionarSeccion('1', 'S1', 'S2')">
-            <h1>1</h1>
+            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ondas animadas -->
+              <circle cx="100" cy="100" r="10" stroke="#b9e119" stroke-width="2" fill="none">
+                <animate attributeName="r" from="10" to="80" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="100" cy="100" r="20" stroke="#b9e119" stroke-width="2" fill="none">
+                <animate attributeName="r" from="20" to="90" dur="2s" begin="0.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+              </circle>
+
+              <!-- Imagen posicionada encima de la animación con movimiento flotante -->
+              <image class="floating-leaf" href="/bit.svg" x="0" y="0" width="200" height="200" alt="hoja_inmersa" />
+            </svg>
+
           </div>
           <div class="section card" (click)="seleccionarSeccion('2', 'S3','')">
-            <h1>2</h1>
+            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Gota de agua (cayendo desde arriba) -->
+              <circle cx="100" cy="0" r="5" fill="#1ac8db" opacity="1">
+                <animate attributeName="cy" from="0" to="150" dur="1s" begin="0s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="0.2s" begin="1s" repeatCount="indefinite" />
+              </circle>
+
+              <!-- Onda concéntrica -->
+              <ellipse cx="100" cy="150" rx="0" ry="0" stroke="#1ac8db" stroke-width="2" fill="none" opacity="0">
+                <animate attributeName="rx" from="0" to="70" dur="1.5s" begin="1.2s" repeatCount="indefinite" />
+                <animate attributeName="ry" from="0" to="20" dur="1.5s" begin="1.2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="1.2s" repeatCount="indefinite" />
+              </ellipse>
+
+              <!-- Hoja emergiendo -->
+              <image class="leaf" href="/hoja-azul.svg" x="160" y="60" width="5" height="5" alt="hoja_inmersa" />
+            </svg>
           </div>
         </div>
         <div class="section-dupla">
           <div class="section card" (click)="seleccionarSeccion('3', 'S4', '')">
-            <h1>3</h1>
+            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Hoja superior-izquierda -->
+              <image id="leaf-top-left" class="leaf-g" href="/hoja-verde.svg" x="30" y="70"
+                width="90" height="80" />
+
+              <!-- Hoja superior-derecha -->
+              <image id="leaf-top-right" class="leaf-g" href="/hoja-verde.svg" x="88" y="60"
+                width="90" height="80" />
+
+              <!-- Hoja superior-central -->
+              <image id="leaf-top-center" class="leaf-g" href="/hoja-verde.svg" x="60" y="50"
+                width="90" height="80" />
+            </svg>
           </div>
           <div class="section card" (click)="seleccionarSeccion('4', 'S5', 'S6')">
             <h1>4</h1>
