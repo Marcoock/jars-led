@@ -1,0 +1,144 @@
+/* clock  */
+
+.box-time {
+    width: fit-content;
+    height: auto;
+    box-shadow: -5px 7px 7px #0000008c;
+    border-radius: 10px;
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -3vw;
+    left: 95vh;
+  }
+  
+  .box-time::before {
+    content: "";
+    background-image: conic-gradient(#ff0052 20deg,
+            transparent 120deg);
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    animation: rotate 2s linear infinite;
+  }
+  
+  .box-time::after {
+    content: "";
+    width: 99%;
+    height: 99%;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff0052;
+    font-size: larger;
+    letter-spacing: 5px;
+    box-shadow: inset -2px 2px 7px #0000008c;
+  }
+  
+  @keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+  
+    100% {
+        transform: rotate(-360deg);
+    }
+  }
+  
+  .content-time {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh 1vw;
+  }
+  
+  .time-title {
+    font-size: .8em;
+    margin-bottom: 20px;
+    color: rgb(108 107 115);
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+  }
+  
+  .countdown-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .time-box {
+    position: relative;
+    /* Necesario para posicionar el pseudo-elemento */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2.3rem;
+    height: 3rem;
+    justify-content: center;
+    border-radius: 3px;
+    background-color: #f1811236;
+    overflow: hidden;
+    /* Asegura que el borde degradado no se desborde */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  }
+  
+  .time-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /* Coloca el borde detrás del contenido */
+    border-radius: 3px;
+    /* Mismo radio que el contenedor */
+    padding: 2px;
+    /* Grosor del borde */
+    background: linear-gradient(45deg, #4da6ff, #ff7e5f);
+    /* Degradado personalizado */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .time {
+    font-family: fantasy;
+    font-size: 1em;
+    font-weight: 200;
+    background-image: linear-gradient(112deg, #b78739, #fe6e62, #fb3365);
+    display: inline-block;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+  }
+  
+  .label-time {
+    font-size: .3em;
+    color: #f60e5c;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+  }
+  
+  .separator-time {
+    font-size: 1em;
+    margin: 0 .2vw;
+    color: rgb(153, 10, 79);
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+  }
+  
+  .message-time {
+    font-size: .5em;
+    color: rgb(16, 9, 40);
+    margin-top: 20px;
+    opacity: 0.7;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+  }
+  

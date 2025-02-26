@@ -1,0 +1,31 @@
+<!-- time n clock -->
+<div class="box-time">
+    <div class="content-time">
+      <h2 class="time-title">Hora Actual</h2>
+      <div class="countdown-time">
+        <div class="time-box">
+          <span class="time" id="hours">{{horas}}</span>
+          <span class="label-time">HORAS</span>
+        </div>
+        <span class="separator-time">:</span>
+        <div class="time-box">
+          <span class="time" id="minutes">{{minutos}}</span>
+          <span class="label-time">MINUTOS</span>
+        </div>
+        <span class="separator-time">:</span>
+        <div class="time-box">
+          <span class="time" id="seconds">{{segundos}}</span>
+          <span class="label-time">SEGUNDOS</span>
+        </div>
+        <span class="separator-time">:</span>
+        <div class="time-box">
+          <span class="time" id="time-date">{{timeDate}}</span>
+          <span class="label-time" *ngIf="timeDate.includes('AM')">PM</span>
+          <span class="label-time" *ngIf="timeDate.includes('PM')">AM</span>
+        </div>
+      </div>
+      <p class="message-time">
+        "El tiempo es relativo, pero cada segundo cuenta."
+      </p>
+    </div>
+  </div>

@@ -1,0 +1,604 @@
+.panel-active {
+    height: 67vh;
+    width: 42vw;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    margin: 2vw 2vw 0 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.title-section {
+    height: 7vh;
+    width: 12vh;
+    background-color: #A3D4DA;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 10px #837c7c;
+    align-content: center;
+}
+
+.section-name {
+    height: 13vh;
+}
+
+.section-description {
+    height: 13vh;
+    place-content: end;
+}
+
+h2,
+p {
+    font-size: .8em;
+    text-shadow: 0px 3px 3px #6f6e6e;
+    color: #525256;
+}
+
+p {
+    font-size: .5em;
+    font-weight: bold;
+    justify-self: center;
+}
+
+.space-bettewen {
+    height: 100%;
+    width: 5vw;
+}
+
+.estructure-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
+.section-A,
+.section-B {
+    height: 100%;
+    width: auto;
+}
+
+
+.separador {
+    height: 53vh;
+    width: 0;
+    border: 1px dashed #23A1AA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+
+    .point {
+        height: .4rem;
+        width: .38rem;
+        background-color: #23A1AA;
+        border-radius: 50vh;
+    }
+
+    .s {
+        margin-top: -1px;
+    }
+
+    .i {
+        margin-bottom: -1px;
+    }
+}
+
+.activ-title {
+    margin-top: 3vh;
+}
+
+.sections-bottons-B {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 5vh; */
+
+    button {
+        margin: 2vh 1vh;
+        background-color: #e11c39;
+    }
+
+    .btn-float::after,
+    .btn-float::before {
+        background-color: #e11c39;
+    }
+    .btn-float:active{
+        background-color: transparent;
+        color: #e11c39;
+        border: #e11c39 solid 1px;
+    }
+    
+    .toggle-inner {
+        background-color: #e11c39;
+    }
+
+    .toggle-text.on {
+        color: #e11c39;
+    }
+
+    .toggle-checkbox:checked+.toggle-label .toggle-text.off {
+        color: #e11c39;
+    }
+}
+
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #121212; */
+    position: relative;
+    width: 24vh;
+    margin-top: 7vh;
+}
+
+
+.bit-A,
+.bit-B {
+    position: relative;
+    width: 30%;
+    margin: 5%;
+    aspect-ratio: 4 / 5;
+}
+
+.bit-B {
+    width: 24%;
+}
+
+
+.bol::before {
+    content: "";
+    position: absolute;
+    top: -17%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 59%;
+    height: 20%;
+    aspect-ratio: 1 / 0.3;
+    border-bottom-left-radius: 51% 42%;
+    border-bottom-right-radius: 51% 42%;
+    border-top-right-radius: 51% 42%;
+    border-top-left-radius: 51% 42%;
+    background-color: #444;
+    border: 1px solid #2f2d2d;
+    box-shadow: 0px 9px 16px 0px rgb(12 12 12 / 61%);
+}
+
+.bol::after {
+    content: "";
+    position: absolute;
+    top: -8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 60%;
+    aspect-ratio: 1 / 0.3;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #2f2d2d;
+}
+
+.bol {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 67% 22%;
+    border-bottom-right-radius: 67% 22%;
+    border-top-right-radius: 50% 45%;
+    border-top-left-radius: 50% 45%;
+    background: rgb(243 240 240);
+    box-shadow: 3px 8px 8px 2px rgb(12 12 12 / 43%);
+    border: 1px solid #2f2d2d;
+    transform-origin: bottom center;
+    animation: animacion 5s linear infinite;
+
+}
+
+.desborde {
+    position: absolute;
+    height: 100%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    border-bottom-left-radius: 67% 22%;
+    border-bottom-right-radius: 67% 22%;
+    transform-origin: top center;
+    overflow: hidden;
+}
+
+.opertors-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.division-h {
+    width: 80%;
+    border: 1px solid #62537B;
+    justify-self: center;
+    border-radius: 1px;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+}
+
+.division-v {
+    height: 80%;
+    border: 1px solid #62537B;
+    justify-self: center;
+    border-radius: 1px;
+    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+}
+
+.liquido {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    background: #41c1fb;
+    border-bottom-left-radius: 67% 22%;
+    border-bottom-right-radius: 67% 22%;
+    transform-origin: top center;
+    border: 1px solid #2f2d2d;
+}
+
+.agua-lleno {
+    height: 74%;
+}
+
+.agua-vacio {
+    height: 0%;
+}
+
+.liquido-top {
+    height: 20%;
+}
+
+.liquido::before {
+    content: "";
+    position: absolute;
+    top: -12%;
+    left: -1px;
+    width: 100%;
+    aspect-ratio: 2 / 0.5;
+    background: #1fa4e0;
+    border-radius: 50%;
+    border: 1px solid #2f2d2d;
+}
+
+.sombra {
+    margin: -10% 0 0 2%;
+    width: 97%;
+    aspect-ratio: 19 / 6;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.reflejo {
+    content: "";
+    position: absolute;
+    top: 19%;
+    left: 61%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    aspect-ratio: 3 / 1;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 58%);
+    z-index: 9;
+}
+
+
+.graph-B {
+    display: flex;
+}
+
+
+/* Contenedor principal */
+.switch {
+    position: relative;
+    /* width: 60px; */
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ocultar el checkbox */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Estilo del fondo del switch */
+.toggle-label {
+    position: absolute;
+    width: 1.5vw;
+    height: 3.5vw;
+    background: #ddd;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Botón deslizante */
+.toggle-inner {
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    background: #1a7f77;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+}
+
+/* Posición de los textos */
+.toggle-text {
+    position: absolute;
+    font-size: .6em;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* Estilos de los textos */
+.toggle-text.on {
+    color: #1a7f77;
+    top: -1vw;
+}
+
+.toggle-text.off {
+    bottom: 1.3vh;
+}
+
+/* Movimiento del botón cuando está activado */
+.toggle-checkbox:checked+.toggle-label .toggle-inner {
+    transform: translateY(-1.5vw);
+}
+
+/* Cambio de color del texto */
+.toggle-checkbox:checked+.toggle-label .toggle-text.on {
+    color: white;
+    transform: translateY(1.5vw);
+}
+
+.toggle-checkbox:checked+.toggle-label .toggle-text.off {
+    color: #1a7f77;
+    transform: translateY(1.5vw);
+}
+
+.s-frequency {
+    margin-top: 4vh;
+}
+
+.g-duration {
+    margin-left: 4vh;
+}
+
+
+.space-top {
+    margin-top: 1vh;
+}
+
+
+/* Etiqueta de activación */
+
+
+.spect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 13vw;
+    overflow: hidden;
+    margin: 0;
+    position: absolute;
+
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ball {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #00a8ff;
+    border-radius: 50%;
+    animation: bounce 5s linear infinite, moveToCenter 5s ease-in-out forwards;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+}
+
+.ball:nth-child(2) {
+    background-color: #9c88ff;
+    animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+    0% {
+        top: 10%;
+        left: 10%;
+    }
+
+    25% {
+        top: 100%;
+        left: 100%;
+    }
+
+    50% {
+        top: 0%;
+        left: 70%;
+    }
+
+    75% {
+        top: 100%;
+        left: 30%;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+    }
+}
+
+@keyframes moveToCenter {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+
+    /* Las pelotitas desaparecen */
+}
+
+.message {
+    position: absolute;
+    top: 5vw;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    border-radius: 3rem;
+    overflow: hidden;
+    animation: showMessage 0.5s 5s forwards;
+    /* Aparece después de 5 segundos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+}
+
+.unckle {
+    width: 15vw !important;
+    height: 13vh !important;
+    position: relative;
+
+    .message {
+        top: 4vw !important;
+        left: 65% !important;
+
+        .liquid-bg {
+            background: linear-gradient(45deg, #ff0000, #aa88ff);
+        }
+    }
+
+    .ball {
+        background-color: #ff0000;
+    }
+
+    .ball:nth-child(2) {
+        background-color: #aa88ff;
+    }
+}
+
+@keyframes showMessage {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        width: 10vw;
+        /* Más ancho */
+        height: 2vw;
+        /* Más bajo */
+        opacity: 1;
+    }
+
+}
+
+/* Efecto de fondo líquido */
+.liquid-bg {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 106%;
+    height: 100%;
+    background: linear-gradient(45deg, #00a8ff, #9c88ff);
+    overflow: hidden;
+    z-index: 1;
+    /* Capa inferior */
+}
+
+/* Gotas animadas */
+.drops {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Capa intermedia */
+}
+
+.drop1,
+.drop2 {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: dropAnimation 3s infinite ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.drop1 {
+    top: 10%;
+    left: 20%;
+}
+
+.drop2 {
+    top: 30%;
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+@keyframes dropAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(50px) scale(0.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Texto visible */
+.message span {
+    position: relative;
+    z-index: 3;
+    /* Capa superior */
+    color: white;
+    /* Color del texto */
+    font-size: .4em;
+    font-weight: bold;
+}

@@ -6,131 +6,36 @@
 <div class="container-dashboard">
   <!-- Panel Principal -->
   <div class="head-panel card">
-
+    <div class="card-content">
+      <div class="card-text">
+        <h1 class="card-title">Colegio de Postgraduados</h1>
+        <h3 class="card-description">Laboratorio de Cultivo de Tegidos Vegetales</h3>
+      </div>
+      <div class="card-img">
+        <img class="ctv" src="/Logo_lab.png"  alt="CTV">
+        <img class="cp" src="/ColegioPostgraduados.png" alt="CP">
+      </div>
+    </div>
   </div>
 
   <!-- Contenido del panel -->
   <div class="content-view">
     <!-- Panel Activo -->
-    <div class="panel-active card">
-      <div class="section-A">
-        <section>
+    <app-panel-active ></app-panel-active>
 
-
-          <div class="bit-A">
-            <div class="bol">
-              <div class="reflejo"></div>
-              <div class="desborde">
-                <div class="liquido agua-lleno"></div>
-              </div>
-            </div>
-            <div class="sombra"></div>
-          </div>
-
-          <div class="bit-B">
-            <div class="bol">
-              <div class="reflejo"></div>
-              <div class="desborde">
-                <div class="liquido agua-vacio"></div>
-              </div>
-            </div>
-            <div class="sombra"></div>
-          </div>
-        </section>
-        <div class="division-h"></div>
-        <p>{{activacionA}}</p>
-        <div class="opertors-container">
-          <div class="graph">
-            <div class="g-duration">
-              <div class="duration">Duración: {{ duration }}</div>
-              <div class="timer-container">
-                <round-progress [current]="remainingTimeD" [max]="totalTimeD" [color]="'#EB9E22'"
-                  [background]="'#e5e7eb'" [radius]="40" [stroke]="3" [rounded]="true" [clockwise]="true">
-                </round-progress>
-
-                <div class="time-display-D">{{ timeFormattedD }}</div>
-              </div>
-            </div>
-            <div class="g-frequency">
-              <div class="frequency">Frecuencia: {{ frequency }}</div>
-              <div class="timer-container">
-                <round-progress [current]="remainingTimeF" [max]="totalTimeF" [color]="'#3B50D6'"
-                  [background]="'#e5e7eb'" [radius]="40" [stroke]="5" [rounded]="true" [clockwise]="true">
-                </round-progress>
-                <svg class="doughnut" viewBox="0 0 100 100" width="84" height="90">
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
-                    stroke-linecap="round-progress" />
-                </svg>
-                <div class="time-display">{{ timeFormattedF }}</div>
-              </div>
-            </div>
-          </div>
-          <div class="sections-bottons">
-            <p>Activación Automática</p>
-            <button>Programación</button>
-            <div class="space-top">
-              <div class="division-h"></div>
-            </div>
-            <p>Activación Manual</p>
-            <div class="switch">
-              <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua()">
-              <label for="toggle" class="toggle-label">
-                <span class="toggle-inner">
-                  <span class="toggle-text on">on</span>
-                  <span class="toggle-text off">off</span>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="estructure-content">
-        <div class="title-section">
-          <h2>{{ seccionActivo }}</h2>
-        </div>
-        <div class="separador">
-          <div class="point s"></div>
-          <div class="point i"></div>
-        </div>
-      </div>
-      <div class="section-B">
-        <p>{{activacionB}}</p>
-        <div class="graph-B">
-          <div class="g-frequency">
-            <div class="frequency">Frecuencia: {{ frequency2 }}</div>
-            <div class="timer-container">
-              <round-progress [current]="remainingTimeF2" [max]="totalTimeF2" [color]="'#3B50D6'"
-                [background]="'#e5e7eb'" [radius]="40" [stroke]="5" [rounded]="true" [clockwise]="true">
-              </round-progress>
-              <svg class="doughnut" viewBox="0 0 100 100" width="84" height="90">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
-                  stroke-linecap="round-progress" />
-              </svg>
-              <div class="time-display">{{ timeFormattedF2 }}</div>
-            </div>
-          </div>
-          <div class="g-duration">
-            <div class="duration">Duración: {{ duration2 }}</div>
-            <div class="timer-container">
-              <round-progress [current]="remainingTimeD2" [max]="totalTimeD2" [color]="'#EB9E22'"
-                [background]="'#e5e7eb'" [radius]="40" [stroke]="3" [rounded]="true" [clockwise]="true">
-              </round-progress>
-
-              <div class="time-display-D">{{ timeFormattedD2 }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- time on clock -->
+    <app-clock></app-clock>
 
     <!-- Menú Secciones -->
     <div class="sections">
       <!-- Primera Sección -->
-      <div class="section-s">
-        <div class="section-dupla">
-          <div class="section card" (click)="seleccionarSeccion('1', 'S1', 'S2')">
-            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <div class="container-section">
+        <div class="section-card">
+          <div class="section card" *ngFor="let s of sections" (click)="seleccionarSeccion(s)"
+            [ngClass]="{'space-g': s.activation.includes('Q1') || s.activation.includes('Q3')}">
+            <p class="absolute section-name">Sección {{s.section}}</p>
+            <svg *ngIf="s.status == value[0]" width="300" height="300" viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg">
               <!-- Ondas animadas -->
               <circle cx="100" cy="100" r="10" stroke="#b9e119" stroke-width="2" fill="none">
                 <animate attributeName="r" from="10" to="80" dur="2s" repeatCount="indefinite" />
@@ -145,9 +50,8 @@
               <image class="floating-leaf" href="/bit.svg" x="0" y="0" width="200" height="200" alt="hoja_inmersa" />
             </svg>
 
-          </div>
-          <div class="section card" (click)="seleccionarSeccion('2', 'S3','')">
-            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg *ngIf="s.status == value[1]" width="300" height="300" viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg">
               <!-- Gota de agua (cayendo desde arriba) -->
               <circle cx="100" cy="0" r="5" fill="#1ac8db" opacity="1">
                 <animate attributeName="cy" from="0" to="150" dur="1s" begin="0s" repeatCount="indefinite" />
@@ -164,46 +68,19 @@
               <!-- Hoja emergiendo -->
               <image class="leaf" href="/hoja-azul.svg" x="160" y="60" width="5" height="5" alt="hoja_inmersa" />
             </svg>
-          </div>
-        </div>
-        <div class="section-dupla">
-          <div class="section card" (click)="seleccionarSeccion('3', 'S4', '')">
-            <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+
+            <svg *ngIf="s.status == value[2]" width="300" height="300" viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg">
               <!-- Hoja superior-izquierda -->
-              <image id="leaf-top-left" class="leaf-g" href="/hoja-verde.svg" x="30" y="70"
-                width="90" height="80" />
+              <image id="leaf-top-left" class="leaf-g" href="/hoja-verde.svg" x="30" y="70" width="90" height="80" />
 
               <!-- Hoja superior-derecha -->
-              <image id="leaf-top-right" class="leaf-g" href="/hoja-verde.svg" x="88" y="60"
-                width="90" height="80" />
+              <image id="leaf-top-right" class="leaf-g" href="/hoja-verde.svg" x="88" y="60" width="90" height="80" />
 
               <!-- Hoja superior-central -->
-              <image id="leaf-top-center" class="leaf-g" href="/hoja-verde.svg" x="60" y="50"
-                width="90" height="80" />
+              <image id="leaf-top-center" class="leaf-g" href="/hoja-verde.svg" x="60" y="50" width="90" height="80" />
             </svg>
-          </div>
-          <div class="section card" (click)="seleccionarSeccion('4', 'S5', 'S6')">
-            <h1>4</h1>
-          </div>
-        </div>
-      </div>
-
-      <!-- Segunda Sección -->
-      <div class="section-q">
-        <div class="section-dupla">
-          <div class="section card" (click)="seleccionarSeccion('5', 'Q1', 'Q2')">
-            <h1>1</h1>
-          </div>
-          <div class="section card" (click)="seleccionarSeccion('6', 'Q3', '')">
-            <h1>2</h1>
-          </div>
-        </div>
-        <div class="section-dupla">
-          <div class="section card" (click)="seleccionarSeccion('7', 'Q4','')">
-            <h1>3</h1>
-          </div>
-          <div class="section card" (click)="seleccionarSeccion('8', 'Q5', 'Q6')">
-            <h1>4</h1>
+            <p class="absolute section-description">{{s.activation}}</p>
           </div>
         </div>
       </div>

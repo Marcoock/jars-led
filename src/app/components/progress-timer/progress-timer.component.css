@@ -1,0 +1,49 @@
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 1rem;
+}
+.frecuencia {
+    background-color: #3B50D6;
+    color: white;
+    padding: .2vw .3vw;
+    border-radius: 15px;
+    font-size: 0.5rem;
+    text-align: center;
+    width: 6vw;
+    ;
+    margin-top: 2vh;
+}
+
+.time-display {
+    position: absolute;
+    font-size: .6em;
+    font-weight: bold;
+    color: #3B4FD6;
+}
+
+.doughnut {
+    position: absolute;
+}
+
+.duración {
+    background-color: #EB9E22;
+    color: white;
+    padding: .2vw .3vw;
+    border-radius: 15px;
+    font-size: 0.5rem;
+    text-align: center;
+    width: 5vw;
+    ;
+    margin-top: 2vh;
+}
+
+.time-display-D {
+    position: absolute;
+    font-size: .6em;
+    font-weight: bold;
+    color: #EB9E22;
+}

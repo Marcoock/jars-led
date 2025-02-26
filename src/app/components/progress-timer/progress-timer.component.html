@@ -1,0 +1,13 @@
+<div class="{{ type }}"> {{ type | titlecase }}: {{ description }} </div>
+  <div class="timer-container">
+    <round-progress [current]="remainingTime" [max]="totalTime" [color]="color"
+      [background]="'#e5e7eb'" [radius]="40" [stroke]="3" [rounded]="true" [clockwise]="true">
+    </round-progress>
+    <svg class="doughnut" *ngIf="type.includes('frecuencia')" viewBox="0 0 100 100" width="84" height="90">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#ffff" stroke-width="7" stroke-dasharray="3, 1"
+        stroke-linecap="round-progress" />
+    </svg>
+    <div class="time-display" *ngIf="type.includes('frecuencia')">{{ timeFormatted }}</div>
+    <div class="time-display-D" *ngIf="type.includes('duración')">{{ timeFormatted }}</div>
+
+</div>

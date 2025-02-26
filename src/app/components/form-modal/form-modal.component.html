@@ -1,0 +1,73 @@
+<div class="modal-overlay">
+  <form class="form">
+
+    <h2 class="form_title"> ¡Progrmación de la válvula!</h2>
+    <p class="form_subtitle">¡Te encuentras programando la linea de activación A1 perteneciente a la Sección 1!</p>
+    <div class="form_inputs" [ngClass]="sectionStyle">
+
+      <div class="date-input-container">
+
+        <input type="time" id="activation" required placeholder=" " [(ngModel)]="data.activacion" step="1">
+        <label id="activation">Hora de activación</label>
+
+      </div>
+
+      <!-- Frecuencia de Activación (hh:mm:ss) -->
+      <div class="time-input-container">
+        <p class="label-title">Frecuencia de activación</p>
+
+        <div class="invert">
+          <label class="label-text">Horas</label>
+          <select (change)="actualizarFrecuencia($event, 'hora')">
+            <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+          </select>
+        </div>
+
+        <h1>:</h1>
+
+        <div class="invert">
+          <label class="label-text">Minutos</label>
+          <select (change)="actualizarFrecuencia($event, 'minuto')">
+            <option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</option>
+          </select>
+        </div>
+
+        <h1>:</h1>
+
+        <div class="invert">
+          <label class="label-text">Segundos</label>
+          <select (change)="actualizarFrecuencia($event, 'segundo')">
+            <option *ngFor="let segundo of segundos" [value]="segundo">{{ segundo }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Duración de la Activación (mm:ss) -->
+      <div class="time-input-container">
+        <p class="label-title">Duración de la activación</p>
+
+        <div class="invert">
+          <label class="label-text">Minutos</label>
+          <select (change)="actualizarDuracion($event, 'minuto')">
+            <option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</option>
+          </select>
+        </div>
+
+        <h1>:</h1>
+
+        <div class="invert">
+          <label class="label-text">Segundos</label>
+          <select (change)="actualizarDuracion($event, 'segundo')">
+            <option *ngFor="let segundo of segundos" [value]="segundo">{{ segundo }}</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <div [ngClass]="'modal-actions-' + sectionStyle">
+      <button (click)="confirmar()">Confirmar</button>
+      <button class="light" (click)="cerrar()">Cancelar</button>
+    </div>
+
+  </form>
+</div>

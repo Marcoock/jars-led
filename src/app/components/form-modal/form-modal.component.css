@@ -1,0 +1,270 @@
+.modal-overlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-actions-A {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin: .5rem 0;
+        font-size: 0.8em;
+        padding: 0.9vh .8vw;
+    }
+
+    button:hover {
+        background-color: transparent;
+        border: #1D8782 solid 1px;
+        color: #1D8782;
+        box-shadow: -2px 2px 16px 5px rgba(74, 194, 188, 1);
+    }
+
+    .light {
+        background-color: transparent;
+        border: #1D8782 solid 1px;
+        color: #1D8782;
+    }
+
+    .light:hover {
+        background-color: #1D8782;
+        border: none;
+        color: #ffffff;
+        box-shadow: -2px 2px 16px 5px rgba(74, 194, 188, 1);
+    }
+
+}
+
+.modal-actions-B {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin: .5rem 0;
+        font-size: 0.8em;
+        padding: 0.9vh .8vw;
+        background-color: #e11c39;
+    }
+
+    button:hover {
+        background-color: transparent;
+        border: #e11c39 solid 1px;
+        color: #e11c39;
+        box-shadow: -2px 2px 16px 5px rgba(194, 74, 104);
+    }
+
+    .light {
+        background-color: transparent;
+        border: #e11c39 solid 1px;
+        color: #e11c39;
+    }
+
+    .light:hover {
+        background-color: #e11c39;
+        border: none;
+        color: #ffffff;
+        box-shadow: -2px 2px 16px 5px rgb(194, 74, 104);
+    }
+
+}
+
+.form {
+    margin: 40px auto;
+    padding: 3rem 1.5rem;
+    background-color: #fff;
+    width: min(350px, 90%);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_title {
+
+    font-size: 2rem;
+
+}
+
+.form_subtitle {
+
+    margin-top: .7rem;
+    color: #9c9999;
+}
+
+.form_inputs {
+
+    margin: 2rem 0 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+    color: #6b6b6b;
+
+}
+
+/* .form_label {
+
+    width: 100%;
+    display: grid;
+    grid-template-areas: "input";
+
+}
+
+.form_input {
+
+    grid-area: input;
+    border-radius: 10px;
+    border: 1px solid #d7d0d0;
+    padding: .7rem 1.5rem;
+    color: #6b6b6b;
+
+}
+
+.form_text {
+
+    grid-area: input;
+    z-index: 100;
+    width: max-content;
+    height: 100%;
+    margin-left: 1rem;
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center;
+    transform-origin: left center;
+    transition: transform .3s;
+} */
+
+/* .form_input:focus+.form_text,
+.form_input:not(:placeholder-shown)+.form_text {
+
+    background-color: white;
+    transform: translateY(-50%) scale(.7);
+
+} */
+.time-input-container,
+.date-input-container {
+    position: relative;
+}
+
+.time-input-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 7px;
+    box-shadow: -1px 2px 7px rgb(0 0 0 / 29%);    
+    padding: 1rem 0;
+}
+
+.label-text {
+    position: revert-layer;
+}
+
+.invert {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: small;
+    align-items: center;
+}
+
+input[type="time"] {
+    border: 2px solid var(--color);
+    font-size: 1.1rem;
+    background-color: #ffffff;
+    border: 1px solid #d7d0d0;
+    color: #cac7c7;
+    padding: 6px 6px 6px 11px;
+    border-radius: 6px;
+    width: calc(100% - 12px);
+    /* margin-bottom: 15px; */
+}
+
+label {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    pointer-events: none;
+    color: #808080;
+    padding: 0 3px 0 3px;
+    border-radius: 6px;
+    background-color: #ffffff;
+
+    transition: top 0.3s, font-size 0.3s;
+}
+
+input[type="time"]:focus+label,
+input[type="time"]:valid+label {
+    top: -12px;
+    font-size: 0.8rem;
+}
+h1{
+    padding: 0 1vw;
+}
+
+.A {
+    input[type="time"]:focus {
+        outline: 1px solid #1D8782;
+        /* Color del botón en modal-actions-A */
+        border-color: #1D8782;
+        /* Opcional: Cambia el color del borde también */
+    }
+    .time-input-container{
+        border: #1D8782 solid 1px;
+    }
+    select{
+        border: #1D8782 solid 1px;
+    }
+    h1{
+        color: #1D8782;
+    }
+}
+
+.B {
+    input[type="time"]:focus {
+        outline: 1px solid #e11c39;
+        /* Color del botón en modal-actions-B */
+        border-color: #e11c39;
+        /* Opcional: Cambia el color del borde también */
+    }
+    .time-input-container{
+        border: #e11c39 solid 1px;
+    }
+    select{
+        border: #6b6b6b solid 1px;
+    }
+
+    select:focus {
+        border-color: #e11c39; /* Cambia el color del borde */
+        color: #808080; /* Cambia el color del texto */
+        outline: none; /* Elimina el contorno por defecto */
+    }
+
+    h1{
+        color: #e11c39;
+    }
+}
+
+.label-title{
+    position: absolute;
+    left: 1rem;
+    top: -1.5rem;
+    font-size: smaller;
+    background-color: #fff;
+    padding: 0 .5rem;
+}
+
+select {
+    height: 2.5rem;
+    width: 2rem;
+    border-radius: 3px;
+    color: #808080;
+    -webkit-appearance: none; /* Removes default styling in WebKit browsers */
+    -moz-appearance: none; /* Removes default styling in Firefox */
+    appearance: none; /* Standard property, but limited support */
+    padding-left: .5rem;
+}
+option{
+    scrollbar-width: none;
+}

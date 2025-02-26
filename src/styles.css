@@ -107,39 +107,51 @@ body::before {
   /* Sombra más pronunciada al hacer hover */
 }
 
-.card img {
-  width: 100%;
-  /* La imagen ocupa todo el ancho */
+.ctv, .cp {
   height: auto;
-  /* Altura automática para mantener la proporción */
   object-fit: cover;
-  /* Ajusta la imagen sin distorsionarla */
+  padding: 0 1vh;
+  filter: drop-shadow(-2px 2px 1px #9d9d9d);
+
+}
+.ctv{
+  width: 2vw;
+}
+.cp{
+  width: 3vw;
 }
 
 .card-content {
-  padding: 16px;
+  
+  padding: 0 1rem;
   /* Espaciado interno */
   flex-grow: 1;
   /* El contenido ocupa el espacio restante */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
+.card-text{
+  display: flex;
+  flex-direction: column;
+}
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   /* Tamaño del título */
   font-weight: bold;
-  /* Negrita */
-  margin-bottom: 8px;
+  text-shadow: 0px 3px 3px #6f6e6e;
+  margin: 0px;
   /* Margen inferior */
-  color: #333333;
+  color: #ffffff;
   /* Color del texto */
 }
 
 .card-description {
-  font-size: 1rem;
+  font-size: .8em;
   /* Tamaño del texto */
-  color: #666666;
-  /* Color del texto */
-  margin-bottom: 16px;
+  color: #ffffff;
+  text-shadow: 0px 3px 3px #6f6e6e;
+  margin: .3vw 0 0 0;
   /* Margen inferior */
 }
 
@@ -175,6 +187,10 @@ body::before {
   background-color: #0056b3;
   /* Color de fondo al hacer hover */
 }
+.btn-container {
+  position: relative;
+  display: inline-block; /* Asegura que el contenedor solo ocupe el espacio del botón */
+}
 
 button {
   position: unset;
@@ -188,4 +204,42 @@ button {
   background-color: #1D8782;
   color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-float {
+  transition: transform 0.3s ease;
+  position: relative; /* Asegura que los pseudo-elementos estén contenidos dentro del botón */
+  z-index: 1; /* Asegura que el botón esté por encima de los pseudo-elementos */
+}
+
+.btn-float::after,
+.btn-float::before {
+  content: '';
+  position: absolute;
+  opacity: 0.3;
+  background-color: #1D8782;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.btn-float:hover {
+  transform: translate(-8px, -8px);
+}
+
+.btn-float:hover::after {
+  transform: translate(4px, 4px);
+}
+
+.btn-float:hover::before {
+  transform: translate(8px, 8px);
+}
+.btn-float:active{
+  background-color: transparent;
+  border: #1D8782 solid 1px;
+  color: #1D8782;
 }

@@ -15,5 +15,6 @@ export class AppComponent {
   title = 'CTV-COLPOS';
 
   constructor(private serviceConex: SerialConnectionService) { }
+  
 
 }

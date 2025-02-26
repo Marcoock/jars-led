@@ -1,0 +1,165 @@
+<!-- Panel Activo -->
+<div class="panel-active card">
+  <div class="section-A">
+    <section>
+      <div class="bit-A">
+        <div class="bol">
+          <div class="reflejo"></div>
+          <div class="desborde">
+            <div class="liquido agua-lleno"></div>
+          </div>
+        </div>
+        <div class="sombra"></div>
+      </div>
+
+      <div class="bit-B">
+        <div class="bol">
+          <div class="reflejo"></div>
+          <div class="desborde">
+            <div class="liquido agua-vacio"></div>
+          </div>
+        </div>
+        <div class="sombra"></div>
+      </div>
+    </section>
+    <div class="division-h"></div>
+    <p>{{activacionA}}</p>
+    <div class="opertors-container">
+      <div class="graph">
+        <div class="s-duration">
+          <!-- Barra de progreso duracion seccion A-->
+          <app-progress-timer [description]="duration" [totalTime]="totalTimeD" [color]="'#EB9E22'"
+            [type]="'duración'"></app-progress-timer>
+        </div>
+        <div class="s-frequency">
+          <!-- Barra de progreso frecuencia seccion A-->
+          <app-progress-timer [description]="frequency" [totalTime]="totalTimeF" [color]="'#3B50D6'"
+            [type]="'frecuencia'"></app-progress-timer>
+        </div>
+      </div>
+      <div class="sections-bottons-A">
+        <p>Activación Automática</p>
+        <div class="btn-container">
+          <button class="btn-float" (click)="abrirModal('A')">Programación</button>
+        </div>
+        <div class="space-top">
+          <div class="division-h"></div>
+        </div>
+        <p class="activ-title">Activación Manual</p>
+        <div class="switch">
+          <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua()">
+          <label for="toggle" class="toggle-label">
+            <span class="toggle-inner">
+              <span class="toggle-text on">on</span>
+              <span class="toggle-text off">off</span>
+            </span>
+          </label>
+        </div>
+        <div class="spect">
+          <div class="container">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="message">
+              <div class="liquid-bg"></div>
+              <div class="drops">
+                <div class="drop1"></div>
+                <div class="drop2"></div>
+              </div>
+              <span>Proxima Activación 4:00pm</span>
+            </div>
+          </div>
+
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+            <defs>
+              <filter id="liquid">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                  result="liquid" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="space-bettewen"></div>
+  <div class="estructure-content">
+    <div class="title-section">
+      <h2>g</h2>
+    </div>
+    <div class="separador">
+      <div class="point s"></div>
+      <div class="point i"></div>
+    </div>
+  </div>
+  <div class="section-B">
+    <p>{{activacionB}}</p>
+    <div class="graph-B">
+      <div class="g-frequency">
+        <!-- Barra de progreso Frecuencia seccion B-->
+        <app-progress-timer [description]="frequency2" [totalTime]="totalTimeF2" [color]="'#3B50D6'"
+          [type]="'frecuencia'"></app-progress-timer>
+      </div>
+      <div class="g-duration">
+        <!-- Barra de progreso duracion seccion B-->
+        <app-progress-timer [description]="duration2" [totalTime]="totalTimeD2" [color]="'#EB9E22'"
+          [type]="'duración'"></app-progress-timer>
+
+      </div>
+    </div>
+    <div class="spect unckle">
+      <div class="container">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="message">
+          <div class="liquid-bg"></div>
+          <div class="drops">
+            <div class="drop1"></div>
+            <div class="drop2"></div>
+          </div>
+          <span>Proxima Activación 4:00pm</span>
+        </div>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+        <defs>
+          <filter id="liquid">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="liquid" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="sections-bottons-B">
+      <div class="autoactiv">
+        <p>Activación Automática</p>
+        <div class="btn-container">
+          <button class="btn-float" (click)="abrirModal('B')">Programación</button>
+        </div>
+
+      </div>
+      <div class="space-top">
+        <div class="division-v"></div>
+      </div>
+      <div class="manualactiv">
+        <p>Activación Manual</p>
+        <div class="switch">
+          <input type="checkbox" id="toggle2" class="toggle-checkbox" (click)="transferirAgua()">
+          <label for="toggle2" class="toggle-label">
+            <span class="toggle-inner">
+              <span class="toggle-text on">on</span>
+              <span class="toggle-text off">off</span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<app-form-modal *ngIf="mostrarModal" [sectionStyle]="styleModal" (cerrarModal)="cerrarModal()"
+  (confirmarModal)="confirmarModal($event)"></app-form-modal>
