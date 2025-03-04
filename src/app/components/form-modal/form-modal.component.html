@@ -1,73 +1,71 @@
 <div class="modal-overlay">
-  <form class="form">
-
-    <h2 class="form_title"> ¡Progrmación de la válvula!</h2>
-    <p class="form_subtitle">¡Te encuentras programando la linea de activación A1 perteneciente a la Sección 1!</p>
+  <form class="form" *ngIf="value">
+    <h2 class="form_title">¡Programación de la válvula!</h2>
+    <p class="form_subtitle">¡Te encuentras programando la línea de activación {{value.activacion}} perteneciente a la
+      Sección {{value.seccion}}!</p>
     <div class="form_inputs" [ngClass]="sectionStyle">
 
+      <!-- Hora de Activación -->
       <div class="date-input-container">
-
-        <input type="time" id="activation" required placeholder=" " [(ngModel)]="data.activacion" step="1">
+        <input type="time" id="activation" required placeholder=" " name="activacion" [(ngModel)]="data.activacion" (change)="onHoraCambio()" [disabled]="desactivarProgramacion"
+          step="1">
         <label id="activation">Hora de activación</label>
-
       </div>
 
       <!-- Frecuencia de Activación (hh:mm:ss) -->
-      <div class="time-input-container">
+      <div class="time-input-container" [ngClass]="{'disabled' : desactivarProgramacion}" >
         <p class="label-title">Frecuencia de activación</p>
-
         <div class="invert">
           <label class="label-text">Horas</label>
-          <select (change)="actualizarFrecuencia($event, 'hora')">
+          <select (change)="actualizarFrecuencia($event, 'hora')" [disabled]="desactivarProgramacion">
             <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
           </select>
         </div>
-
         <h1>:</h1>
-
         <div class="invert">
           <label class="label-text">Minutos</label>
-          <select (change)="actualizarFrecuencia($event, 'minuto')">
+          <select (change)="actualizarFrecuencia($event, 'minuto')" [disabled]="desactivarProgramacion">
             <option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</option>
           </select>
         </div>
-
         <h1>:</h1>
-
         <div class="invert">
           <label class="label-text">Segundos</label>
-          <select (change)="actualizarFrecuencia($event, 'segundo')">
+          <select (change)="actualizarFrecuencia($event, 'segundo')" [disabled]="desactivarProgramacion">
             <option *ngFor="let segundo of segundos" [value]="segundo">{{ segundo }}</option>
           </select>
         </div>
       </div>
 
       <!-- Duración de la Activación (mm:ss) -->
-      <div class="time-input-container">
+      <div class="time-input-container" [ngClass]="{'disabled' : desactivarProgramacion}">
         <p class="label-title">Duración de la activación</p>
-
         <div class="invert">
           <label class="label-text">Minutos</label>
-          <select (change)="actualizarDuracion($event, 'minuto')">
+          <select (change)="actualizarDuracion($event, 'minuto')" [disabled]="desactivarProgramacion">
             <option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</option>
           </select>
         </div>
-
         <h1>:</h1>
-
         <div class="invert">
           <label class="label-text">Segundos</label>
-          <select (change)="actualizarDuracion($event, 'segundo')">
+          <select (change)="actualizarDuracion($event, 'segundo')" [disabled]="desactivarProgramacion">
             <option *ngFor="let segundo of segundos" [value]="segundo">{{ segundo }}</option>
           </select>
         </div>
       </div>
 
+      <div class="checkbox-wrapper-13">
+        <input id="c1-13" type="checkbox" [(ngModel)]="desactivarProgramacion" name="check">
+        <label for="c1-13">¡Desactivar Programación!</label>
+      </div>
+      
     </div>
+
+    <!-- Botones de Confirmar y Cancelar -->
     <div [ngClass]="'modal-actions-' + sectionStyle">
       <button (click)="confirmar()">Confirmar</button>
       <button class="light" (click)="cerrar()">Cancelar</button>
     </div>
-
   </form>
 </div>

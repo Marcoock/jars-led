@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 @Component({
@@ -9,19 +9,26 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
   templateUrl: './progress-timer.component.html',
   styleUrl: './progress-timer.component.css'
 })
-export class ProgressTimerComponent implements OnInit{
+export class ProgressTimerComponent implements OnChanges {
   @Input() description!: string;
   @Input() totalTime!: number;
   @Input() color!: string;
   @Input() type!: string;
+  @Input() activationTime!: string; // Hora de activación en formato HH:MM:SS
 
   remainingTime!: number;
   timeFormatted!: string;
 
-  ngOnInit() {
-    this.remainingTime = this.totalTime;
-    this.formatTime();
-    this.startCountdown();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['totalTime'] && changes['totalTime'].currentValue !== undefined) {
+      this.remainingTime = this.totalTime;
+      this.formatTime();
+      this.startCountdown();
+    }
+    
+    if (this.type.includes('frecuencia') && this.activationTime) {
+      this.calculateTimeUntilNextActivation();
+    }
   }
 
   startCountdown() {
@@ -40,5 +47,21 @@ export class ProgressTimerComponent implements OnInit{
     const minutes = Math.floor((this.remainingTime % 3600) / 60);
     const seconds = this.remainingTime % 60;
     this.timeFormatted = `${hours}h : ${minutes}m : ${seconds}s`;
+  }
+
+  calculateTimeUntilNextActivation() {
+    const now = new Date();
+    const [hours, minutes, seconds] = this.activationTime.split(':').map(Number);
+    const activationDate = new Date(now);
+    activationDate.setHours(hours, minutes, seconds, 0);
+
+    if (activationDate < now) {
+      activationDate.setHours(activationDate.getHours() + Math.floor(this.totalTime / 3600));
+      activationDate.setMinutes(activationDate.getMinutes() + Math.floor((this.totalTime % 3600) / 60));
+      activationDate.setSeconds(activationDate.getSeconds() + (this.totalTime % 60));
+    }
+    
+    this.remainingTime = Math.floor((activationDate.getTime() - now.getTime()) / 1000);
+    this.formatTime();
   }
 }

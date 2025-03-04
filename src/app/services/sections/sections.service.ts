@@ -14,4 +14,5 @@ export class SectionsService {
   setSeccion(seccion: any) {
     this.seccionActiva.next(seccion);
   }
+  
 }

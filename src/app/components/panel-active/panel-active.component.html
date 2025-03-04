@@ -23,7 +23,7 @@
       </div>
     </section>
     <div class="division-h"></div>
-    <p>{{activacionA}}</p>
+    <p>Activación {{activacionA}}</p>
     <div class="opertors-container">
       <div class="graph">
         <div class="s-duration">
@@ -40,14 +40,14 @@
       <div class="sections-bottons-A">
         <p>Activación Automática</p>
         <div class="btn-container">
-          <button class="btn-float" (click)="abrirModal('A')">Programación</button>
+          <button class="btn-float" (click)="abrirModal('A',idActivacionA)">Programación</button>
         </div>
         <div class="space-top">
           <div class="division-h"></div>
         </div>
         <p class="activ-title">Activación Manual</p>
         <div class="switch">
-          <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua()">
+          <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua(idActivacionA)">
           <label for="toggle" class="toggle-label">
             <span class="toggle-inner">
               <span class="toggle-text on">on</span>
@@ -65,7 +65,8 @@
                 <div class="drop1"></div>
                 <div class="drop2"></div>
               </div>
-              <span>Proxima Activación 4:00pm</span>
+              <span *ngIf="horaA.includes('undefined')">Válvula no programada</span>
+              <span *ngIf="!horaA.includes('undefined')">Proxima Activación {{horaA}}</span>
             </div>
           </div>
 
@@ -86,16 +87,16 @@
   </div>
   <div class="space-bettewen"></div>
   <div class="estructure-content">
-    <div class="title-section">
-      <h2>g</h2>
+    <div class="title-section" [ngStyle]="{'background-color': seccion?.color}">
+      <h2>{{nombreSeccionA}}</h2>
     </div>
-    <div class="separador">
-      <div class="point s"></div>
-      <div class="point i"></div>
+    <div class="separador" [ngStyle]="{'border-color': seccion?.border}">
+      <div class="point s" [ngStyle]="{'background-color': seccion?.border}"></div>
+      <div class="point i" [ngStyle]="{'background-color': seccion?.border}"></div>
     </div>
   </div>
   <div class="section-B">
-    <p>{{activacionB}}</p>
+    <p>Activación {{activacionB}}</p>
     <div class="graph-B">
       <div class="g-frequency">
         <!-- Barra de progreso Frecuencia seccion B-->
@@ -119,7 +120,8 @@
             <div class="drop1"></div>
             <div class="drop2"></div>
           </div>
-          <span>Proxima Activación 4:00pm</span>
+          <span *ngIf="horaB.includes('undefined')">Válvula no programada</span>
+          <span *ngIf="!horaB.includes('undefined')">Proxima Activación {{horaB}}</span>
         </div>
       </div>
 
@@ -138,7 +140,7 @@
       <div class="autoactiv">
         <p>Activación Automática</p>
         <div class="btn-container">
-          <button class="btn-float" (click)="abrirModal('B')">Programación</button>
+          <button class="btn-float" (click)="abrirModal('B', idActivacionB)">Programación</button>
         </div>
 
       </div>
@@ -148,7 +150,7 @@
       <div class="manualactiv">
         <p>Activación Manual</p>
         <div class="switch">
-          <input type="checkbox" id="toggle2" class="toggle-checkbox" (click)="transferirAgua()">
+          <input type="checkbox" id="toggle2" class="toggle-checkbox" (click)="transferirAgua(idValvulaB)">
           <label for="toggle2" class="toggle-label">
             <span class="toggle-inner">
               <span class="toggle-text on">on</span>
@@ -161,5 +163,5 @@
 
   </div>
 </div>
-<app-form-modal *ngIf="mostrarModal" [sectionStyle]="styleModal" (cerrarModal)="cerrarModal()"
+<app-form-modal *ngIf="mostrarModal" [sectionStyle]="styleModal" [idActivacion]="idActivacionModal" (cerrarModal)="cerrarModal()"
   (confirmarModal)="confirmarModal($event)"></app-form-modal>
