@@ -76,10 +76,14 @@
 
 }
 
+h2{
+    color: var(--text-color-secundary);
+}
+
 .form {
     margin: 40px auto;
     padding: 3rem 1.5rem;
-    background-color: #fff;
+    background-color: var(--form-color);
     width: min(350px, 90%);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -94,7 +98,7 @@
 .form_subtitle {
 
     margin-top: .7rem;
-    color: #9c9999;
+    color: var(--text-color-time);
 }
 
 .form_inputs {
@@ -172,7 +176,7 @@
 input[type="time"] {
     border: 2px solid var(--color);
     font-size: 1.1rem;
-    background-color: #ffffff;
+    background-color: var(--form-color);
     border: 1px solid #d7d0d0;
     color: #cac7c7;
     padding: 6px 6px 6px 11px;
@@ -186,10 +190,10 @@ label {
     top: 8px;
     left: 12px;
     pointer-events: none;
-    color: #808080;
+    color: var(--text-color-time);
     padding: 0 3px 0 3px;
     border-radius: 6px;
-    background-color: #ffffff;
+    background-color: var(--form-color);
 
     transition: top 0.3s, font-size 0.3s;
 }
@@ -218,6 +222,7 @@ h1 {
 
     select {
         border: #6b6b6b solid 1px;
+        background-color: var(--input-found);
     }
 
     select:focus {
@@ -240,7 +245,7 @@ h1 {
             --focus: 2px rgba(39, 94, 254, .3);
             --border: #BBC1E1;
             --border-hover: #1D8782;
-            --background: #fff;
+            --background: --form-color;
             --disabled: #F6F8FF;
             --disabled-inner: #E1E6F9;
             -webkit-appearance: none;
@@ -364,6 +369,7 @@ h1 {
 
     select {
         border: #6b6b6b solid 1px;
+        background-color: var(--input-found);
     }
 
     select:focus {
@@ -386,7 +392,7 @@ h1 {
             --focus: 2px rgba(254, 39, 57, 0.3);
             --border: #BBC1E1;
             --border-hover: #fe2781;
-            --background: #fff;
+            --background: --form-color;
             --disabled: #F6F8FF;
             --disabled-inner: #E1E6F9;
             -webkit-appearance: none;
@@ -497,7 +503,8 @@ h1 {
     left: 1rem;
     top: -1.5rem;
     font-size: smaller;
-    background-color: #fff;
+    background-color: var(--form-color);
+    color: var(--text-color-time);
     padding: 0 .5rem;
 }
 

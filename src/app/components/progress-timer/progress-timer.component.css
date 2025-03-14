@@ -7,7 +7,7 @@
     margin-top: 1rem;
 }
 .frecuencia {
-    background-color: #3B50D6;
+    background-color: var(--frequency-color);
     color: white;
     padding: .2vw .3vw;
     border-radius: 15px;
@@ -22,7 +22,7 @@
     position: absolute;
     font-size: .6em;
     font-weight: bold;
-    color: #3B4FD6;
+    color: var(--frequency-color);
 }
 
 .doughnut {

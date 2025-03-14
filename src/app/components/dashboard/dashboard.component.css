@@ -25,8 +25,8 @@ height: 13vh;
 h2,
 p {
   font-size: .8em;
-  text-shadow: 0px 3px 3px #6f6e6e;
-  color: #525256;
+  text-shadow: var(--text-shadow);
+  color: var(--text-color);
 }
 
 p {
@@ -45,9 +45,10 @@ p {
   /* Proporcional al alto de la ventana */
   width: 70vw;
   /* Proporcional al ancho de la ventana */
-  background-image: linear-gradient(to right, #23A1AA, #9fe8ea, #D7F6F1);
+  background-image: var(--header-color);
   border-radius: 1rem;
   margin-bottom: 2vh;
+  border: var(--border-head);
 }
 
 .content-view {
@@ -66,7 +67,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 2vh;
-  width: 15.2vw;
+  width: var(--width);
 }
 .space-g{
   margin-top: 2vh;
@@ -90,12 +91,13 @@ p {
   /* Proporcional al alto */
   width: 7vw;
   /* Proporcional al ancho */
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  border: var(--border-head);
   border-radius: .5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(140deg, #ffff 0%, #BAFDF2 75%);
+  background-image: var(--color-section);
 }
 
 /* Hoja inmersa */

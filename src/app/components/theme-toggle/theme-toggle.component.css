@@ -1,0 +1,47 @@
+/* Estilos para el botón */
+.theme-toggle {
+    position: fixed;
+    right: -4rem;
+    top: 9rem;
+    width:10%;
+    background: var(--button-color);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    z-index: 1000;
+  }
+  
+  /* Contenedor para los iconos */
+  .theme-toggle .icon-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Estilos para los SVGs */
+  .theme-toggle svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Ocultar la luna inicialmente */
+  .theme-toggle .moon {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  
+  /* Cambiar visibilidad y rotación al hacer clic */
+  .theme-toggle.active .sun {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  
+  .theme-toggle.active .moon {
+    opacity: 1;
+    transform: rotate(0deg);
+  }

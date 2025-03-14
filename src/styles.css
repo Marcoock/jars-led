@@ -1,8 +1,90 @@
+:root {
+  --primary-color: #ffffff; /* Color principal (claro) */
+  --background-color: #EBE9E9; /* Fondo claro */
+  --text-color: #525256; /* Texto oscuro */
+  --text-color-secundary:rgb(16, 9, 40);
+  --text-color-time:rgb(108 107 115);
+  --text-shadow:0px 3px 3px #6f6e6e;
+  --button-color: #16244f;
+  --img-color: grayscale(0%); /* Valor inicial */
+  --img-shadow: drop-shadow(7px 8px 3px #9d9d9d);
+  --background_bottom:drop-shadow(2px -6px 3px #9d9d9d);
+  --background_top_left:drop-shadow(7px 8px 3px #9d9d9d);
+  --background_top_right:drop-shadow(-5px 7px 3px #9d9d9d);
+  --header-color:linear-gradient(to right, #23A1AA, #9fe8ea, #D7F6F1);
+  --border-head:none;
+  --panel-active-color:#ffffff;
+  --progress-stoke: #ffffff;
+  --bar-color:#3B50D6;
+  --frequency-color:#3B50D6;
+  --box-shadow: 0px 2px 10px #837c7c;
+  --drop-shadow:drop-shadow(-2px 2px 1px #9d9d9d);
+  --color-section: linear-gradient(140deg, #ffff 0%, #BAFDF2 75%);
+  --width: 15.2vw;
+  --fits: grayscale(0%); 
+  --form-color: #ffffff;
+  --input-found:#ffffff;
+  --division:1px solid #62537B;
+  --bol-background-before: #ffffff;
+  --bol-border-before:1px solid #2f2d2d;
+  --border-jars:1px solid #2f2d2d;
+  --before-height:20%;
+  --after-height:15%;
+  --bol-background:rgb(243 240 240);
+  --bol-border:1px solid #2f2d2d;
+  --liquid-border:1px solid #5f5e5e;
+  --before-liquid:1px solid #565656;
+  --background-liquid:#1fa3e081;
+  --left-liquid:-1px;
+  --reflejo-backgroud:rgb(255 255 255 / 58%);
+}
+
+.dark-theme {
+  --primary-color: #1e1e1e; /* Color principal (oscuro) */
+  --background-color: #232323; /* Fondo oscuro */
+  --text-color: #ffffff; /* Texto claro */
+  --text-color-time:rgb(255, 255, 255);
+  --text-color-secundary:rgb(255, 255, 255);
+  --text-shadow:0px 3px 3px #212121;
+  --button-color: #4d4e55;
+  --img-color: grayscale(117%) brightness(193%); /* Valor inicial */
+  --img-shadow: drop-shadow(-1px 6px 0px #000000);
+  --background_bottom:drop-shadow(2px -6px 3px #000000);
+  --background_top_left:drop-shadow(7px 8px 3px #000000);
+  --background_top_right:drop-shadow(-5px 7px 3px #000000);
+  --header-color:linear-gradient(to right, #ffffff4d, #ffffff4d, #ffffff4d);
+  --border-head:#ffffff solid 2px;
+  --panel-active-color:#ffffff4d;
+  --progress-stoke: #656565;
+  --bar-color:#01ffea;
+  --frequency-color:#59e1c7;
+  --box-shadow: 0px 2px 10px #000000ab;
+  --drop-shadow:drop-shadow(-2px 2px 1px #000000ab);
+  --color-section: linear-gradient(140deg, #ffffff4d 0%, #ffffff4d 75%);
+  --width: 15.6vw;
+  --fits: invert(100%);
+  --form-color:#4d4e55;
+  --input-found: #3b3535;
+  --division: 1px solid #ffffff;
+  --bol-background-before:#444;
+  --bol-border-before:#444;
+  --border-jars:none;
+  --before-height:24%;
+  --after-height:17%;
+  --bol-background:rgba(255, 255, 255, 0.1);
+  --bol-border:2% solid transparent;
+  --liquid-border:none;
+  --before-liquid:none;
+  --background-liquid:#00aeff81;
+  --left-liquid:0px;
+  --reflejo-backgroud:rgb(173 167 167 / 58%);
+}
+
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-color: #EBE9E9;
+  background-color: var(--background-color);
   position: relative;
   /* Necesario para posicionar el pseudo-elemento */
 }
@@ -10,20 +92,16 @@ body {
 /* Pseudo-elemento para la imagen de fondo */
 body::before {
   content: "";
-  /* Necesario para que el pseudo-elemento se renderice */
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Ajusta la altura según el tamaño de tu imagen */
   background-image: url(/footer.png);
   background-position: bottom;
   background-repeat: no-repeat;
-  filter: drop-shadow(7px 8px 3px #9d9d9d);
-  /* Aplicar el filtro */
+  filter:var(--img-shadow) var(--img-color);
   z-index: -1;
-  /* Coloca el pseudo-elemento detrás del contenido del body */
 }
 
 /* Clase base para evitar repetir propiedades comunes */
@@ -43,7 +121,7 @@ body::before {
 .background-bottom-right {
   bottom: 0;
   right: 0;
-  filter: drop-shadow(2px -6px 3px #9d9d9d);
+  filter: var(--background_bottom) var(--img-color);
   width: 200px;
   /* Ancho del div */
   background-image: url(/background-bottom-right.png);
@@ -54,7 +132,7 @@ body::before {
 .background-bottom-left {
   bottom: 0;
   left: 0;
-  filter: drop-shadow(2px -6px 3px #9d9d9d);
+  filter: var(--background_bottom) var(--img-color);
   width: 200px;
   /* Ancho del div */
   background-image: url(/background-bottom-left.png);
@@ -65,7 +143,7 @@ body::before {
 .background-top-right {
   top: 0;
   right: 0;
-  filter: drop-shadow(-5px 7px 3px #9d9d9d);
+  filter: var(--background_top_right) var(--img-color);
   width: 127px;
   /* Ancho del div */
   background-image: url(/background-top-right.png);
@@ -76,7 +154,7 @@ body::before {
 .background-top-left {
   top: 0;
   left: 0;
-  filter: drop-shadow(7px 8px 3px #9d9d9d);
+  filter: var(--background_top_left) var(--img-color);
   width: 127px;
   /* Ancho del div */
   background-image: url(/background-top-left.png);
@@ -140,7 +218,7 @@ body::before {
   font-size: 1rem;
   /* Tamaño del título */
   font-weight: bold;
-  text-shadow: 0px 3px 3px #6f6e6e;
+  text-shadow: var(--text-shadow);
   margin: 0px;
   /* Margen inferior */
   color: #ffffff;
@@ -151,7 +229,7 @@ body::before {
   font-size: .8em;
   /* Tamaño del texto */
   color: #ffffff;
-  text-shadow: 0px 3px 3px #6f6e6e;
+  text-shadow: var(--text-shadow);
   margin: .3vw 0 0 0;
   /* Margen inferior */
 }

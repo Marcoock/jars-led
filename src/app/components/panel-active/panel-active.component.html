@@ -1,12 +1,13 @@
 <!-- Panel Activo -->
-<div class="panel-active card">
+<div class="panel-active card" [ngClass]="{'space-around': !activacionB }">
   <div class="section-A">
     <section>
+      <img src="/bit.png" alt="filtros">
       <div class="bit-A">
         <div class="bol">
           <div class="reflejo"></div>
           <div class="desborde">
-            <div class="liquido agua-lleno"></div>
+            <div class="liquido agua-vacio"></div>
           </div>
         </div>
         <div class="sombra"></div>
@@ -16,7 +17,7 @@
         <div class="bol">
           <div class="reflejo"></div>
           <div class="desborde">
-            <div class="liquido agua-vacio"></div>
+            <div class="liquido agua-lleno"></div>
           </div>
         </div>
         <div class="sombra"></div>
@@ -29,12 +30,13 @@
         <div class="s-duration">
           <!-- Barra de progreso duracion seccion A-->
           <app-progress-timer [description]="duration" [totalTime]="totalTimeD" [color]="'#EB9E22'"
-            [type]="'duración'"></app-progress-timer>
+            [type]="'duración'" [idValvula]="idValvulaA"></app-progress-timer>
         </div>
         <div class="s-frequency">
           <!-- Barra de progreso frecuencia seccion A-->
-          <app-progress-timer [description]="frequency" [totalTime]="totalTimeF" [color]="'#3B50D6'"
-            [type]="'frecuencia'"></app-progress-timer>
+          <app-progress-timer [description]="frequency" [totalTime]="totalTimeF" [color]="'var(--bar-color)'" [type]="'frecuencia'"
+          [activationTime]="siguienteActivacionA"
+          [frequency]="frequency" [idValvula]="idValvulaA"></app-progress-timer>
         </div>
       </div>
       <div class="sections-bottons-A">
@@ -47,7 +49,7 @@
         </div>
         <p class="activ-title">Activación Manual</p>
         <div class="switch">
-          <input type="checkbox" id="toggle" class="toggle-checkbox" (click)="transferirAgua(idActivacionA)">
+          <input type="checkbox" id="toggle" class="toggle-checkbox" (change)="toggleValvula($event, idValvulaA)">>
           <label for="toggle" class="toggle-label">
             <span class="toggle-inner">
               <span class="toggle-text on">on</span>
@@ -95,19 +97,19 @@
       <div class="point i" [ngStyle]="{'background-color': seccion?.border}"></div>
     </div>
   </div>
-  <div class="section-B">
+  <div class="section-B" [hidden]="!activacionB">
     <p>Activación {{activacionB}}</p>
-    <div class="graph-B">
+    <div class="graph-B"> 
       <div class="g-frequency">
         <!-- Barra de progreso Frecuencia seccion B-->
-        <app-progress-timer [description]="frequency2" [totalTime]="totalTimeF2" [color]="'#3B50D6'"
-          [type]="'frecuencia'"></app-progress-timer>
+        <app-progress-timer [description]="frequency2" [totalTime]="totalTimeF2" [color]="'var(--bar-color)'" [type]="'frecuencia'"
+        [activationTime]="siguienteActivacionB"
+        [frequency]="frequency2" [idValvula]="idValvulaB"></app-progress-timer>
       </div>
       <div class="g-duration">
         <!-- Barra de progreso duracion seccion B-->
         <app-progress-timer [description]="duration2" [totalTime]="totalTimeD2" [color]="'#EB9E22'"
-          [type]="'duración'"></app-progress-timer>
-
+          [type]="'duración'" [idValvula]="idValvulaB"></app-progress-timer>
       </div>
     </div>
     <div class="spect unckle">
@@ -150,7 +152,7 @@
       <div class="manualactiv">
         <p>Activación Manual</p>
         <div class="switch">
-          <input type="checkbox" id="toggle2" class="toggle-checkbox" (click)="transferirAgua(idValvulaB)">
+          <input type="checkbox" id="toggle2" class="toggle-checkbox" (change)="toggleValvula($event, idValvulaB)">>
           <label for="toggle2" class="toggle-label">
             <span class="toggle-inner">
               <span class="toggle-text on">on</span>

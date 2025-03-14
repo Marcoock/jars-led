@@ -20,6 +20,7 @@
     "@angular/router": "^18.1.0",
     "angular-svg-round-progressbar": "^14.0.0",
     "gsap": "^3.12.7",
+    "ngx-socket-io": "^4.8.4",
     "rxjs": "~7.8.0",
     "three": "^0.174.0",
     "tslib": "^2.3.0",

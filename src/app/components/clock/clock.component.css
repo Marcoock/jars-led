@@ -28,7 +28,7 @@
     content: "";
     width: 99%;
     height: 99%;
-    background: #ffffff;
+    background: var(--progress-stoke);
     position: absolute;
     border-radius: 10px;
     display: flex;
@@ -61,8 +61,8 @@
   .time-title {
     font-size: .8em;
     margin-bottom: 20px;
-    color: rgb(108 107 115);
-    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+    color: var(--text-color-time);
+    filter: var(--drop-shadow);
   }
   
   .countdown-time {
@@ -118,27 +118,47 @@
     display: inline-block;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+    filter: var(--drop-shadow);
   }
   
   .label-time {
     font-size: .3em;
     color: #f60e5c;
-    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+    filter: var(--drop-shadow);
   }
   
   .separator-time {
     font-size: 1em;
     margin: 0 .2vw;
     color: rgb(153, 10, 79);
-    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+    filter: var(--drop-shadow);
   }
   
   .message-time {
     font-size: .5em;
-    color: rgb(16, 9, 40);
+    color: var(--text-color-secundary);
     margin-top: 20px;
     opacity: 0.7;
-    filter: drop-shadow(-2px 2px 1px #9d9d9d);
+    filter: var(--drop-shadow);
   }
   
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 576px) { /* ... */ }
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) { /* ... */ }
+
+/* Pantallas medianas (laptops) */
+@media (min-width: 769px) and (max-width: 992px) { /* ... */ }
+
+/* Pantallas grandes (desktops) */
+@media (min-width: 993px) and (max-width: 1200px) { 
+  
+}
+/* Pantallas extra grandes */
+@media (min-width: 1600px) {
+  .box-time{
+    bottom: 4vw;
+    left: 81vh;
+  }
+ }

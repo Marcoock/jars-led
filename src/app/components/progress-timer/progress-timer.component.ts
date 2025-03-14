@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { SectionsService } from '../../services/sections/sections.service';
+import { takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-progress-timer',
   standalone: true,
   imports: [RoundProgressModule, CommonModule],
   templateUrl: './progress-timer.component.html',
-  styleUrl: './progress-timer.component.css'
+  styleUrls: ['./progress-timer.component.css']
 })
 export class ProgressTimerComponent implements OnChanges {
   @Input() description!: string;
@@ -15,31 +18,94 @@ export class ProgressTimerComponent implements OnChanges {
   @Input() color!: string;
   @Input() type!: string;
   @Input() activationTime!: string; // Hora de activación en formato HH:MM:SS
+  @Input() frequency!: string;       // Frecuencia del ciclo
+  @Input() idValvula!: number;       // Identificador de la válvula
 
   remainingTime!: number;
   timeFormatted!: string;
+  private destroy$ = new Subject<void>();
+
+  private countdownInterval: any; // Almacena el ID del intervalo
+  private paused: boolean = false; // Nueva variable para manejar la pausa
+
+  constructor(private cdr: ChangeDetectorRef, private comunicacionService: SectionsService) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    // Limpiar el intervalo anterior si existe
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+
     if (changes['totalTime'] && changes['totalTime'].currentValue !== undefined) {
       this.remainingTime = this.totalTime;
       this.formatTime();
-      this.startCountdown();
+      this.comunicacionService.startCountdown$
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((idValvula: number) => {
+          if (idValvula === this.idValvula) {
+            console.log(`Evento recibido: startCountdown para válvula ${idValvula}`);
+            this.startCountdown();
+          }
+        });
+      this.comunicacionService.stopCountdown$
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((idValvula: number) => {
+          if (idValvula === this.idValvula) {
+            console.log(`Evento recibido: stopCountdown para válvula ${idValvula}`);
+            this.pauseCountdown();
+          }
+        });
     }
-    
+
+    // 🟢 Si el tipo es 'frecuencia', calcular cuánto falta para la siguiente activación
     if (this.type.includes('frecuencia') && this.activationTime) {
-      this.calculateTimeUntilNextActivation();
+      this.remainingTime = this.calcularTiempoRestante(this.activationTime);
+      this.formatTime();
+      this.startCountdown();
     }
   }
 
+  // ⏳ Calcula el tiempo restante hasta la próxima activación en segundos
+  calcularTiempoRestante(activationTime: string): number {
+    const ahora = new Date();
+    const [hora, minutos, segundos] = activationTime.split(':').map(Number);
+
+    // Validar la entrada (hora, minutos, segundos) para evitar NaN
+    if (isNaN(hora) || isNaN(minutos) || isNaN(segundos)) {
+      console.error('Formato de hora no válido');
+      return 0;
+    }
+
+    const activacion = new Date();
+    activacion.setHours(hora, minutos, segundos, 0);
+
+    // Si la activación es en el futuro, calculamos la diferencia
+    let diferencia = activacion.getTime() - ahora.getTime();
+    
+    // Si la activación ya pasó hoy, sumamos 24 horas para obtener el siguiente ciclo
+    if (diferencia < 0) {
+      diferencia += 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+    }
+
+    return Math.floor(diferencia / 1000); // Convertir a segundos
+  }
+
   startCountdown() {
-    const interval = setInterval(() => {
-      if (this.remainingTime > 0) {
+    this.paused = false; // Aseguramos que no esté en pausa
+    this.countdownInterval = setInterval(() => {
+      if (this.remainingTime > 0 && !this.paused) {
         this.remainingTime--;
         this.formatTime();
+        this.cdr.detectChanges(); // Forzar la detección de cambios
       } else {
-        clearInterval(interval);
+        clearInterval(this.countdownInterval);
       }
     }, 1000);
+  }
+
+  pauseCountdown() {
+    // Al recibir stopCountdown, solo pausamos el contador (sin detener el intervalo)
+    this.paused = true;
   }
 
   formatTime() {
@@ -49,19 +115,10 @@ export class ProgressTimerComponent implements OnChanges {
     this.timeFormatted = `${hours}h : ${minutes}m : ${seconds}s`;
   }
 
-  calculateTimeUntilNextActivation() {
-    const now = new Date();
-    const [hours, minutes, seconds] = this.activationTime.split(':').map(Number);
-    const activationDate = new Date(now);
-    activationDate.setHours(hours, minutes, seconds, 0);
-
-    if (activationDate < now) {
-      activationDate.setHours(activationDate.getHours() + Math.floor(this.totalTime / 3600));
-      activationDate.setMinutes(activationDate.getMinutes() + Math.floor((this.totalTime % 3600) / 60));
-      activationDate.setSeconds(activationDate.getSeconds() + (this.totalTime % 60));
+  ngOnDestroy() {
+    // Limpiar el intervalo cuando el componente se destruye
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
     }
-    
-    this.remainingTime = Math.floor((activationDate.getTime() - now.getTime()) / 1000);
-    this.formatTime();
   }
 }

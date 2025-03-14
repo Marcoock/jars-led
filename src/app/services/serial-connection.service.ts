@@ -40,4 +40,9 @@ export class SerialConnectionService {
       })
     );
   }
+
+  getEstadoSeccion(nombreSeccion: number): Observable<string> {
+    const url = `${this.conexion}estado-seccion/${nombreSeccion}`; // Endpoint para obtener el estado
+    return this.http.get<string>(url); // Hacer la solicitud GET
+  }
 }
